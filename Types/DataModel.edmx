@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DataModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CourseSet" EntityType="DataModel.Course" />
+          <EntitySet Name="CalendarEntrySet" EntityType="DataModel.CalendarEntry" />
+          <EntitySet Name="ExamSet" EntityType="DataModel.Exam" />
+          <EntitySet Name="PersonSet" EntityType="DataModel.Person" />
+          <AssociationSet Name="CourseCalendarEntry" Association="DataModel.CourseCalendarEntry">
+            <End Role="Course" EntitySet="CourseSet" />
+            <End Role="CalendarEntry" EntitySet="CalendarEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="StudentExam" Association="DataModel.StudentExam">
+            <End Role="Student" EntitySet="PersonSet" />
+            <End Role="Exam" EntitySet="ExamSet" />
+          </AssociationSet>
+          <AssociationSet Name="StudentCourse" Association="DataModel.StudentCourse">
+            <End Role="Student" EntitySet="PersonSet" />
+            <End Role="Course" EntitySet="CourseSet" />
+          </AssociationSet>
+          <AssociationSet Name="TeacherCourse" Association="DataModel.TeacherCourse">
+            <End Role="Teacher" EntitySet="PersonSet" />
+            <End Role="Course" EntitySet="CourseSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Instance" Type="String" Nullable="false" />
+          <Property Name="InstanceYear" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="ECTS" Type="String" Nullable="false" />
+          <NavigationProperty Name="CalendarEntry" Relationship="DataModel.CourseCalendarEntry" FromRole="Course" ToRole="CalendarEntry" />
+          <NavigationProperty Name="Student" Relationship="DataModel.StudentCourse" FromRole="Course" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="DataModel.TeacherCourse" FromRole="Course" ToRole="Teacher" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalendarEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" Nullable="false" />
+          <Property Name="StartHour" Type="String" Nullable="false" />
+          <Property Name="EndHour" Type="String" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="DataModel.CourseCalendarEntry" FromRole="CalendarEntry" ToRole="Course" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Grade" Type="String" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="DataModel.StudentExam" FromRole="Exam" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="FamilyName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher" BaseType="DataModel.Person">
+          <NavigationProperty Name="Course" Relationship="DataModel.TeacherCourse" FromRole="Teacher" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Student" BaseType="DataModel.Person">
+          <NavigationProperty Name="Exam" Relationship="DataModel.StudentExam" FromRole="Student" ToRole="Exam" />
+          <NavigationProperty Name="Course" Relationship="DataModel.StudentCourse" FromRole="Student" ToRole="Course" />
+        </EntityType>
+        <Association Name="CourseCalendarEntry">
+          <End Type="DataModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="DataModel.CalendarEntry" Role="CalendarEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalendarEntry">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentExam">
+          <End Type="DataModel.Student" Role="Student" Multiplicity="*" />
+          <End Type="DataModel.Exam" Role="Exam" Multiplicity="*" />
+        </Association>
+        <Association Name="StudentCourse">
+          <End Type="DataModel.Student" Role="Student" Multiplicity="*" />
+          <End Type="DataModel.Course" Role="Course" Multiplicity="*" />
+        </Association>
+        <Association Name="TeacherCourse">
+          <End Type="DataModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="DataModel.Course" Role="Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataModel" />
+        <Alias Key="Target" Value="DataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
