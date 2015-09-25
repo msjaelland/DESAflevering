@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/23/2015 20:58:53
+-- Date Created: 09/25/2015 03:29:05
 -- Generated from EDMX file: C:\Users\frank\OneDrive\Code\Visual Studio\DesRunningExample\Types\DataModel.edmx
 -- --------------------------------------------------
 
@@ -82,11 +82,12 @@ GO
 CREATE TABLE [dbo].[CourseSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Instance] nvarchar(max)  NOT NULL,
+    [Instance] int  NOT NULL,
     [InstanceYear] int  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [ECTS] int  NOT NULL,
-    [TeacherId] int  NOT NULL
+    [TeacherId] int  NOT NULL,
+    [Teacher_Id] int  NULL
 );
 GO
 
@@ -263,21 +264,6 @@ ON [dbo].[StudentCourse]
     ([Course_Id]);
 GO
 
--- Creating foreign key on [TeacherId] in table 'CourseSet'
-ALTER TABLE [dbo].[CourseSet]
-ADD CONSTRAINT [FK_TeacherCourse]
-    FOREIGN KEY ([TeacherId])
-    REFERENCES [dbo].[PersonSet_Teacher]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TeacherCourse'
-CREATE INDEX [IX_FK_TeacherCourse]
-ON [dbo].[CourseSet]
-    ([TeacherId]);
-GO
-
 -- Creating foreign key on [Course_Id] in table 'ExamSet'
 ALTER TABLE [dbo].[ExamSet]
 ADD CONSTRAINT [FK_ExamCourse]
@@ -291,6 +277,21 @@ GO
 CREATE INDEX [IX_FK_ExamCourse]
 ON [dbo].[ExamSet]
     ([Course_Id]);
+GO
+
+-- Creating foreign key on [Teacher_Id] in table 'CourseSet'
+ALTER TABLE [dbo].[CourseSet]
+ADD CONSTRAINT [FK_CourseTeacher]
+    FOREIGN KEY ([Teacher_Id])
+    REFERENCES [dbo].[PersonSet_Teacher]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CourseTeacher'
+CREATE INDEX [IX_FK_CourseTeacher]
+ON [dbo].[CourseSet]
+    ([Teacher_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'PersonSet_Student'

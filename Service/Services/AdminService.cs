@@ -19,14 +19,29 @@ namespace Service.Services
             df = new DomainFacade();
         }
 
-        public Student GetStudent(string _name)
+        public void AddCalendarEntry(Day _day, string _starthour, string _endhour, int _courseId)
         {
-            return df.GetStudent(_name);
+            df.AddCalendarEntry(_day, _starthour, _endhour, _courseId);
         }
 
-        public void CreateStudent(string _name, string _familyName, string _email)
+        public void AssignTeacher(int _teacherId, int _courseId)
         {
-            df.CreateStudent(_name, _familyName, _email);
+            df.AssignTeacher(_teacherId, _courseId);
+        }
+
+        public void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects)
+        {
+            df.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
+        }
+
+        public List<string> GetCourseInfo(int _id)
+        {
+            return df.GetCourseInfo(_id);
+        }
+
+        public List<int> GetListOfCourseId()
+        {
+            return df.GetListOfCourseId();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Types
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Instance { get; set; }
+        public CourseInstance Instance { get; set; }
         public int InstanceYear { get; set; }
         public string Description { get; set; }
         public int ECTS { get; set; }
@@ -34,8 +34,8 @@ namespace Types
         public virtual ICollection<CalendarEntry> CalendarEntry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }
-        public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD1A2F81-A914-4D95-A8A5-06778AD3B46E}</ProjectGuid>
+    <ProjectGuid>{BB196C92-CBA9-4C11-822E-0BDB9C13A13C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Host</RootNamespace>
@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{a1236867-c7f9-4c7e-b3e2-207b0d95f6e6}</Project>
+      <Project>{ee0b2187-ce71-4d16-8ed0-c2105b4eec42}</Project>
       <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>

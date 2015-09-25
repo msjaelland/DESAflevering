@@ -13,9 +13,18 @@ namespace Service.Services
     public interface IAdminService
     {
         [OperationContract]
-        Student GetStudent(string _name);
+        List<string> GetCourseInfo(int _id);
 
         [OperationContract]
-        void CreateStudent(string _name, string _familyName, string _email);
+        List<int> GetListOfCourseId();
+
+        [OperationContract]
+        void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects);
+
+        [OperationContract]
+        void AssignTeacher(int _teacherId, int _courseId);
+
+        [OperationContract]
+        void AddCalendarEntry(Day _day, string _starthour, string _endhour, int _courseId);
     }
 }

@@ -17,8 +17,8 @@
         <AssociationConnector Association="DataModel.StudentExam" />
         <AssociationConnector Association="DataModel.StudentCourse" ManuallyRouted="false" >
         </AssociationConnector>
-        <AssociationConnector Association="DataModel.TeacherCourse" />
         <AssociationConnector Association="DataModel.ExamCourse" />
+        <AssociationConnector Association="DataModel.CourseTeacher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

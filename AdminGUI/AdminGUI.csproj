@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{24B9AED7-374C-4A7D-9DDE-A08B5AF10C46}</ProjectGuid>
+    <ProjectGuid>{4957918E-5939-432E-AB3E-A3E86E877238}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Client</RootNamespace>
-    <AssemblyName>Client</AssemblyName>
+    <RootNamespace>AdminGUI</RootNamespace>
+    <AssemblyName>AdminGUI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,6 +73,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Domain\ObjectFactory.cs" />
+    <Compile Include="Facade\DomainFacade.cs" />
+    <Compile Include="Facade\NetworkFacade.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{ee0b2187-ce71-4d16-8ed0-c2105b4eec42}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types\Types.csproj">
+      <Project>{f341b8cd-5ed6-4ec1-9df9-013f87cb862d}</Project>
+      <Name>Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

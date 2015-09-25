@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1236867-C7F9-4C7E-B3E2-207B0D95F6E6}</ProjectGuid>
+    <ProjectGuid>{EE0B2187-CE71-4D16-8ED0-C2105B4EEC42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Service</RootNamespace>
@@ -44,7 +44,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,8 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\IAdminService.cs" />
-    <Compile Include="Services\ITeacherService.cs" />
-    <Compile Include="Services\TeacherService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

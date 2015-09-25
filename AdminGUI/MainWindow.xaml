@@ -1,0 +1,29 @@
+﻿<Window x:Class="AdminGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminGUI"
+        mc:Ignorable="d"
+        Title="Admin system" Height="500" Width="800">
+    <TabControl x:Name="tabControl" Height="Auto" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabItem Header="Course">
+            <Grid Background="#FFE5E5E5">
+                <Label x:Name="label" Content="Register course" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Width="300"/>
+                <Label x:Name="label1" Content="All courses" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="478"/>
+                <ListView x:Name="lstCourses" HorizontalAlignment="Stretch" Height="Auto" Margin="305,26,0,0" VerticalAlignment="Stretch" Width="Auto">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" Width="30"/>
+                            <GridViewColumn Header="Course name" Width="90"/>
+                            <GridViewColumn Header="Instance" Width="80"/>
+                            <GridViewColumn Header="Description" Width="120"/>
+                            <GridViewColumn Header="ECTS" Width="40"/>
+                            <GridViewColumn Header="Teacher" Width="110"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

@@ -34,13 +34,13 @@
       <End Role="Course" EntitySet="CourseSet" />
       <End Role="StudentCourse" EntitySet="StudentCourse" />
     </AssociationSet>
-    <AssociationSet Name="TeacherCourse" Association="DataModel.Store.TeacherCourse">
-      <End Role="Teacher" EntitySet="PersonSet_Teacher" />
-      <End Role="Course" EntitySet="CourseSet" />
-    </AssociationSet>
     <AssociationSet Name="ExamCourse" Association="DataModel.Store.ExamCourse">
       <End Role="Exam" EntitySet="ExamSet" />
       <End Role="Course" EntitySet="CourseSet" />
+    </AssociationSet>
+    <AssociationSet Name="CourseTeacher" Association="DataModel.Store.CourseTeacher">
+      <End Role="Course" EntitySet="CourseSet" />
+      <End Role="Teacher" EntitySet="PersonSet_Teacher" />
     </AssociationSet>
     <AssociationSet Name="FK_Student_inherits_Person" Association="DataModel.Store.FK_Student_inherits_Person">
       <End Role="Person" EntitySet="PersonSet" />
@@ -57,11 +57,12 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Instance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Instance" Type="int" Nullable="false" />
     <Property Name="InstanceYear" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ECTS" Type="int" Nullable="false" />
     <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="Teacher_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="CalendarEntrySet">
     <Key>
@@ -131,18 +132,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="TeacherCourse">
-    <End Role="Teacher" Type="DataModel.Store.PersonSet_Teacher" Multiplicity="1" />
-    <End Role="Course" Type="DataModel.Store.CourseSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Course">
-        <PropertyRef Name="TeacherId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ExamCourse">
     <End Role="Exam" Type="DataModel.Store.ExamSet" Multiplicity="*" />
     <End Role="Course" Type="DataModel.Store.CourseSet" Multiplicity="1" />
@@ -152,6 +141,18 @@
       </Principal>
       <Dependent Role="Exam">
         <PropertyRef Name="Course_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseTeacher">
+    <End Role="Course" Type="DataModel.Store.CourseSet" Multiplicity="*" />
+    <End Role="Teacher" Type="DataModel.Store.PersonSet_Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="Teacher_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -252,13 +253,13 @@
             <End Role="Student" EntitySet="PersonSet" />
             <End Role="Course" EntitySet="CourseSet" />
           </AssociationSet>
-          <AssociationSet Name="TeacherCourse" Association="DataModel.TeacherCourse">
-            <End Role="Teacher" EntitySet="PersonSet" />
-            <End Role="Course" EntitySet="CourseSet" />
-          </AssociationSet>
           <AssociationSet Name="ExamCourse" Association="DataModel.ExamCourse">
             <End Role="Exam" EntitySet="ExamSet" />
             <End Role="Course" EntitySet="CourseSet" />
+          </AssociationSet>
+          <AssociationSet Name="CourseTeacher" Association="DataModel.CourseTeacher">
+            <End Role="Course" EntitySet="CourseSet" />
+            <End Role="Teacher" EntitySet="PersonSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Course">
@@ -267,15 +268,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Instance" Type="String" Nullable="false" />
+          <Property Name="Instance" Type="DataModel.CourseInstance" Nullable="false" />
           <Property Name="InstanceYear" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
           <Property Name="ECTS" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CalendarEntry" Relationship="DataModel.CourseCalendarEntry" FromRole="Course" ToRole="CalendarEntry" />
           <NavigationProperty Name="Student" Relationship="DataModel.StudentCourse" FromRole="Course" ToRole="Student" />
-          <NavigationProperty Name="Teacher" Relationship="DataModel.TeacherCourse" FromRole="Course" ToRole="Teacher" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Exam" Relationship="DataModel.ExamCourse" FromRole="Course" ToRole="Exam" />
+          <NavigationProperty Name="Teacher" Relationship="DataModel.CourseTeacher" FromRole="Course" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="CalendarEntry">
           <Key>
@@ -308,7 +309,7 @@
           <Property Name="Email" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Teacher" BaseType="DataModel.Person">
-          <NavigationProperty Name="Course" Relationship="DataModel.TeacherCourse" FromRole="Teacher" ToRole="Course" />
+          <NavigationProperty Name="Course" Relationship="DataModel.CourseTeacher" FromRole="Teacher" ToRole="Course" />
         </EntityType>
         <EntityType Name="Student" BaseType="DataModel.Person">
           <NavigationProperty Name="Exam" Relationship="DataModel.StudentExam" FromRole="Student" ToRole="Exam" />
@@ -333,18 +334,6 @@
         <Association Name="StudentCourse">
           <End Type="DataModel.Student" Role="Student" Multiplicity="*" />
           <End Type="DataModel.Course" Role="Course" Multiplicity="*" />
-        </Association>
-        <Association Name="TeacherCourse">
-          <End Type="DataModel.Teacher" Role="Teacher" Multiplicity="1" />
-          <End Type="DataModel.Course" Role="Course" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Course">
-              <PropertyRef Name="TeacherId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="ExamCourse">
           <End Type="DataModel.Exam" Role="Exam" Multiplicity="*" />
@@ -373,6 +362,14 @@
           <Member Name="Fail" Value="1" />
           <Member Name="Pass" Value="2" />
         </EnumType>
+        <EnumType Name="CourseInstance">
+          <Member Name="Fall" Value="1" />
+          <Member Name="Spring" Value="2" />
+        </EnumType>
+        <Association Name="CourseTeacher">
+          <End Type="DataModel.Course" Role="Course" Multiplicity="*" />
+          <End Type="DataModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -455,6 +452,15 @@
       <EndProperty Name="Exam">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CourseTeacher" TypeName="DataModel.CourseTeacher" StoreEntitySet="CourseSet">
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Id" ColumnName="Teacher_Id" />
+      </EndProperty>
+      <EndProperty Name="Course">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Teacher_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
