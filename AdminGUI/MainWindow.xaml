@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminGUI"
         mc:Ignorable="d"
-        Title="Admin system" Height="500" Width="800">
+        Title="Admin system" Height="500" Width="900">
     <TabControl x:Name="tabControl" Height="Auto" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <TabItem Header="Course">
             <Grid Background="#FFE5E5E5">
@@ -14,12 +14,13 @@
                 <ListView x:Name="lstCourses" HorizontalAlignment="Stretch" Height="Auto" Margin="305,26,0,0" VerticalAlignment="Stretch" Width="Auto">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="ID" Width="30"/>
-                            <GridViewColumn Header="Course name" Width="90"/>
-                            <GridViewColumn Header="Instance" Width="80"/>
-                            <GridViewColumn Header="Description" Width="120"/>
-                            <GridViewColumn Header="ECTS" Width="40"/>
-                            <GridViewColumn Header="Teacher" Width="110"/>
+                            <GridViewColumn Header="ID" Width="30" DisplayMemberBinding="{Binding [0]}"/>
+                            <GridViewColumn Header="Course name" Width="120" DisplayMemberBinding="{Binding [1]}"/>
+                            <GridViewColumn Header="Instance" Width="80" DisplayMemberBinding="{Binding [2]}"/>
+                            <GridViewColumn Header="Description" Width="120" DisplayMemberBinding="{Binding [3]}"/>
+                            <GridViewColumn Header="ECTS" Width="40" DisplayMemberBinding="{Binding [4]}"/>
+                            <GridViewColumn Header="Teacher id" Width="70" DisplayMemberBinding="{Binding [5]}"/>
+                            <GridViewColumn Header="Teacher name" Width="100" DisplayMemberBinding="{Binding [6]}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

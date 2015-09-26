@@ -78,13 +78,27 @@ namespace Service.Facade
                 {
                     course.Add(c.Id.ToString());
                     course.Add(c.Name);
-                    course.Add(c.Instance.ToString());
-                    course.Add(c.InstanceYear.ToString());
+                    course.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
                     course.Add(c.Description);
                     course.Add(c.ECTS.ToString());
                     course.Add(c.TeacherId.ToString());
+                    course.Add(GetTeacherName(c.TeacherId));
 
                     return course;
+                }
+            }
+            return null;
+        }
+
+        public string GetTeacherName(int _id)
+        {
+            var persons = from p in db.PersonSet select p;
+
+            foreach(Teacher t in persons)
+            {
+                if(t.Id == _id)
+                {
+                    return t.Name + t.FamilyName;
                 }
             }
             return null;
