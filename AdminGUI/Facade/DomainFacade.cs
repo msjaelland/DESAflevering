@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Types;
 
 namespace AdminGUI.Facade
 {
@@ -22,7 +21,7 @@ namespace AdminGUI.Facade
             return nf.GetListOfCourseId();
         }
 
-        public void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
         {
             nf.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
         }

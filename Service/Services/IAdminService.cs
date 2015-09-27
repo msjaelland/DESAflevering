@@ -19,7 +19,7 @@ namespace Service.Services
         List<int> GetListOfCourseId();
 
         [OperationContract]
-        void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects);
+        void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects);
 
         [OperationContract]
         void AssignTeacher(int _teacherId, int _courseId);

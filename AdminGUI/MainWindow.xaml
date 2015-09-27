@@ -24,6 +24,22 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <TextBox x:Name="txbName" HorizontalAlignment="Left" Height="30" Margin="115,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="16"/>
+                <Label x:Name="label2" Content="Course name" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txbInstanceYear" HorizontalAlignment="Left" Height="31" Margin="115,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="16"/>
+                <ComboBox x:Name="cmbInstance" HorizontalAlignment="Left" Margin="115,102,0,0" VerticalAlignment="Top" Width="185" Height="30">
+                    <ComboBoxItem Name="cmbiSpring">Spring</ComboBoxItem>
+                    <ComboBoxItem Name="cmbiFall">Fall</ComboBoxItem>
+                </ComboBox>
+                <Label x:Name="label2_Copy" Content="Instance" HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label2_Copy1" Content="Instance year" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txbDescription" HorizontalAlignment="Left" Height="31" Margin="115,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="16"/>
+                <Label x:Name="label2_Copy2" Content="Description" HorizontalAlignment="Left" Margin="0,204,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txbEcts" HorizontalAlignment="Left" Height="31" Margin="115,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="16"/>
+                <Label x:Name="label2_Copy3" Content="ECTS" HorizontalAlignment="Left" Margin="0,258,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cmbTeacher" HorizontalAlignment="Left" Margin="115,305,0,0" VerticalAlignment="Top" Width="185" Height="30"/>
+                <Label x:Name="label2_Copy4" Content="Assign teacher&#xD;&#xA;" HorizontalAlignment="Left" Margin="0,309,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="btnSave" Content="Add/save" HorizontalAlignment="Left" Margin="115,356,0,0" VerticalAlignment="Top" Width="118" Height="32" Click="btnSave_Click"/>
             </Grid>
         </TabItem>
     </TabControl>

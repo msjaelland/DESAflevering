@@ -1,7 +1,6 @@
 ﻿using Service.Services;
 using System.Collections.Generic;
 using System.ServiceModel;
-using Types;
 
 namespace AdminGUI.Facade
 {
@@ -25,7 +24,7 @@ namespace AdminGUI.Facade
             return proxy.GetListOfCourseId();
         }
 
-        public void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
         {
             proxy.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
         }

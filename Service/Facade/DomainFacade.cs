@@ -27,7 +27,7 @@ namespace Service.Facade
             dbf.AssignTeacher(_teacherId, _courseId);
         }
 
-        public void CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
         {
             dbf.CreateCourse(ObjectFactory.Instance.CreateCourse(_name, _instance, _instanceYear, _description, _ects));
         }

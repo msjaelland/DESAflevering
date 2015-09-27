@@ -50,12 +50,19 @@ namespace Service.Domain
             return c;
         }
 
-        public Course CreateCourse(string _name, CourseInstance _instance, int _instanceYear, string _description, int _ects)
+        public Course CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
         {
             Course c = new Course();
 
             c.Name = _name;
-            c.Instance = _instance;
+            if(_instance == 1)
+            {
+                c.Instance = CourseInstance.Spring;
+            }
+            else if(_instance == 2)
+            {
+                c.Instance = CourseInstance.Fall;
+            }
             c.InstanceYear = _instanceYear;
             c.Description = _description;
             c.ECTS = _ects;
