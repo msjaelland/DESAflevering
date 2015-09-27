@@ -10,21 +10,22 @@ namespace AdminGUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        DomainFacade df;
+        NetworkFacade nf;
 
         public MainWindow()
         {
             InitializeComponent();
-            df = new DomainFacade();
+            nf = new NetworkFacade();
             UpdateCoursesListView();
+            UpdateTeacherListView();
         }
 
         public void UpdateCoursesListView()
         {
             lstCourses.Items.Clear();
-            foreach (int i in df.GetListOfCourseId())
+            foreach(int i in nf.GetListOfCourseId())
             {
-                List<string> courseInfo = df.GetCourseInfo(i);
+                List<string> courseInfo = nf.GetCourseInfo(i);
                 lstCourses.Items.Add(courseInfo);
             }
         }
@@ -32,14 +33,32 @@ namespace AdminGUI
         public void UpdateTeacherListView()
         {
             lstTeachers.Items.Clear();
+            foreach(int i in nf.GetListOfTeacherId())
+            {
+                List<string> teacherInfo = nf.GetTeacherInfo(i);
+                lstTeachers.Items.Add(teacherInfo);
+            }
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnSaveCourse_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                df.CreateCourse(txbName.Text, cmbInstance.SelectedIndex + 1, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
+                nf.CreateCourse(txbName.Text, cmbInstance.SelectedIndex + 1, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
                 UpdateCoursesListView();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Some of the filled textfield doesn't match the required input. Please fill out form correctly.");
+            }
+        }
+
+        private void buttonSaveTeacher_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                nf.CreateTeacher(txbTeacherName.Text, txbFamilyName.Text, txbEmail.Text);
+                UpdateTeacherListView();
             }
             catch (FormatException)
             {
