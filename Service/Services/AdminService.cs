@@ -19,7 +19,7 @@ namespace Service.Services
             df = new DomainFacade();
         }
 
-        public void AddCalendarEntry(Day _day, string _starthour, string _endhour, int _courseId)
+        public void AddCalendarEntry(int _day, string _starthour, string _endhour, int _courseId)
         {
             df.AddCalendarEntry(_day, _starthour, _endhour, _courseId);
         }
@@ -42,6 +42,20 @@ namespace Service.Services
         public List<int> GetListOfCourseId()
         {
             return df.GetListOfCourseId();
+        }
+        public List<int> GetListOfTeacherId()
+        {
+            return df.GetListOfTeacherId();
+        }
+
+        public List<string> GetTeacherInfo(int _id)
+        {
+            return df.GetTeacherInfo(_id);
+        }
+
+        public void CreateTeacher(string _name, string _familyName, string _email)
+        {
+            df.CreateTeacher(_name, _familyName, _email);
         }
     }
 }

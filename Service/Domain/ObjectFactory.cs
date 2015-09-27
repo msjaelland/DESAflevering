@@ -38,11 +38,38 @@ namespace Service.Domain
             return s;
         }
 
-        public CalendarEntry CreateCalendarEntry(Day _day, string _startHour, string _endhour, int _courseId)
+        public CalendarEntry CreateCalendarEntry(int _day, string _startHour, string _endhour, int _courseId)
         {
             CalendarEntry c = new CalendarEntry();
 
-            c.Day = _day;
+            if(_day == 1)
+            {
+                c.Day = Day.Monday;
+            }
+            else if(_day == 2)
+            {
+                c.Day = Day.Tuesday;
+            }
+            else if (_day == 3)
+            {
+                c.Day = Day.Wednesday;
+            }
+            else if (_day == 4)
+            {
+                c.Day = Day.Thursday;
+            }
+            else if (_day == 5)
+            {
+                c.Day = Day.Friday;
+            }
+            else if (_day == 6)
+            {
+                c.Day = Day.Saturday;
+            }
+            else if (_day == 7)
+            {
+                c.Day = Day.Sunday;
+            }
             c.StartHour = _startHour;
             c.EndHour = _endhour;
             c.CourseId = _courseId;
@@ -68,6 +95,17 @@ namespace Service.Domain
             c.ECTS = _ects;
 
             return c;
+        }
+
+        public Teacher CreateTeacher(string _name, string _familyName, string _email)
+        {
+            Teacher t = new Teacher();
+
+            t.Name = _name;
+            t.FamilyName = _familyName;
+            t.Email = _email;
+
+            return t;
         }
     }
 }

@@ -16,87 +16,53 @@ namespace Service.Facade
             db = new DataModelContainer();
         }
 
-        public string[] GetStudentByEmail(string _email)
-        {
-            string[] studentArray = new string[4];
-            var students = from s in db.PersonSet select s;
+        #region Teacher stuff
 
-            foreach(Student s in students)
-            {
-                if(s.Email == _email)
-                {
-                    studentArray[0] = s.Id.ToString();
-                    studentArray[1] = s.Name;
-                    studentArray[2] = s.FamilyName;
-                    studentArray[3] = s.Email;
-                }
-            }
-            return studentArray; ;
-        }
-
-        public void CreateStudent(Student _student)
+        public void CreateTeacher(Teacher _teacher)
         {
-            db.PersonSet.Add(_student);
+            db.PersonSet.Add(_teacher);
             db.SaveChanges();
         }
 
-        public void AddCalendarEntry(CalendarEntry _calendarEntry)
+        public List<int> GetListOfTeacherId()
         {
-            db.CalendarEntrySet.Add(_calendarEntry);
-            db.SaveChanges();
+            List<int> _teacherIdList = new List<int>();
+
+            var persons = from p in db.PersonSet select p;
+
+            foreach (Teacher t in persons)
+            {
+                _teacherIdList.Add(t.Id);
+            }
+            return _teacherIdList;
         }
 
-        public void AssignTeacher(int _teacherId, int _courseId)
+        public List<string> GetTeacherInfo(int _id)
         {
-            var courses = from c in db.CourseSet select c;
+            List<string> _teacherInfo = new List<string>();
 
-            foreach(Course c in courses)
+            var _persons = from p in db.PersonSet select p;
+
+            foreach (Teacher t in _persons)
             {
-                if(c.Id == _courseId)
+                if (t.Id == _id)
                 {
-                    c.TeacherId = _teacherId;
-                    db.SaveChanges();
+                    _teacherInfo.Add(t.Id.ToString());
+                    _teacherInfo.Add(t.Name);
+                    _teacherInfo.Add(t.FamilyName);
+                    _teacherInfo.Add(t.Email);
                 }
             }
-        }
-
-        public void CreateCourse(Course _course)
-        {
-            db.CourseSet.Add(_course);
-            db.SaveChanges();
-        }
-
-        public List<string> GetCourseInfo(int _id)
-        {
-            List<string> course = new List<string>();
-
-            var courses = from c in db.CourseSet select c;
-
-            foreach(Course c in courses)
-            {
-                if(c.Id == _id)
-                {
-                    course.Add(c.Id.ToString());
-                    course.Add(c.Name);
-                    course.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
-                    course.Add(c.Description);
-                    course.Add(c.ECTS.ToString());
-                    course.Add(c.TeacherId.ToString());
-                    course.Add(GetTeacherName(c.TeacherId));
-
-                    return course;
-                }
-            }
-            return null;
+            return _teacherInfo;
         }
 
         public string GetTeacherName(int _id)
         {
-            var persons = from p in db.PersonSet select p;
+            var _persons = from p in db.PersonSet select p;
 
-            foreach(Teacher t in persons)
+            foreach (Teacher t in _persons)
             {
-                if(t.Id == _id)
+                if (t.Id == _id)
                 {
                     return t.Name + t.FamilyName;
                 }
@@ -104,11 +70,95 @@ namespace Service.Facade
             return null;
         }
 
+        public void AssignTeacher(int _teacherId, int _courseId)
+        {
+            var _courses = from c in db.CourseSet select c;
+
+            foreach (Course c in _courses)
+            {
+                if (c.Id == _courseId)
+                {
+                    c.TeacherId = _teacherId;
+                    db.SaveChanges();
+                }
+            }
+        }
+        #endregion
+
+        #region Student stuff
+
+        public void CreateStudent(Student _student)
+        {
+            db.PersonSet.Add(_student);
+            db.SaveChanges();
+        }
+
+        public List<string> GetStudentByEmail(string _email)
+        {
+            List<string> _studentInfo = new List<string>();
+            var _students = from s in db.PersonSet select s;
+
+            foreach (Student s in _students)
+            {
+                if (s.Email == _email)
+                {
+                    _studentInfo.Add(s.Id.ToString());
+                    _studentInfo.Add(s.Name);
+                    _studentInfo.Add(s.FamilyName);
+                    _studentInfo.Add(s.Email);
+                }
+            }
+            return _studentInfo; ;
+        }
+        #endregion
+
+        #region Course stuff
+
+        public void CreateCourse(Course _course)
+        {
+            db.CourseSet.Add(_course);
+            db.SaveChanges();
+        }
+
         public List<int> GetListOfCourseId()
         {
-            var courses = from c in db.CourseSet select c.Id;
+            var _courses = from c in db.CourseSet select c.Id;
 
-            return courses.ToList<int>();
+            return _courses.ToList<int>();
         }
+
+        public List<string> GetCourseInfo(int _id)
+        {
+            List<string> _courseInfo = new List<string>();
+
+            var _courses = from c in db.CourseSet select c;
+
+            foreach (Course c in _courses)
+            {
+                if (c.Id == _id)
+                {
+                    _courseInfo.Add(c.Id.ToString());
+                    _courseInfo.Add(c.Name);
+                    _courseInfo.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
+                    _courseInfo.Add(c.Description);
+                    _courseInfo.Add(c.ECTS.ToString());
+                    _courseInfo.Add(c.TeacherId.ToString());
+                    _courseInfo.Add(GetTeacherName(c.TeacherId));
+
+                    return _courseInfo;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        #region Calender entry stuff
+
+        public void AddCalendarEntry(CalendarEntry _calendarEntry)
+        {
+            db.CalendarEntrySet.Add(_calendarEntry);
+            db.SaveChanges();
+        }
+        #endregion
     }
 }

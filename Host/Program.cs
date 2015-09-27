@@ -12,15 +12,16 @@ namespace Host
     {
         static void Main(string[] args)
         {
-            using(ServiceHost adminHost = new ServiceHost(typeof(AdminService)))
-            {
-                adminHost.Open();
-                Console.WriteLine("Admin service is hostet on port 8001");
-                Console.WriteLine("<Press enter to close server>\n");
-                Console.ReadLine();
-            }
+            ServiceHost adminHost = new ServiceHost(typeof(AdminService));
+            ServiceHost teacherHost = new ServiceHost(typeof(TeacherService));
 
+            adminHost.Open();
+            Console.WriteLine("Admin service is hostet on port 8001");
+            teacherHost.Open();
+            Console.WriteLine("Teacher service is hostet on port 8002");
 
+            Console.WriteLine("<Press enter to close server>\n");
+            Console.ReadLine();
         }
     }
 }

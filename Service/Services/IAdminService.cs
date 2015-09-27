@@ -25,6 +25,15 @@ namespace Service.Services
         void AssignTeacher(int _teacherId, int _courseId);
 
         [OperationContract]
-        void AddCalendarEntry(Day _day, string _starthour, string _endhour, int _courseId);
+        void AddCalendarEntry(int _day, string _starthour, string _endhour, int _courseId);
+
+        [OperationContract]
+        List<string> GetTeacherInfo(int _id);
+
+        [OperationContract]
+        List<int> GetListOfTeacherId();
+
+        [OperationContract]
+        void CreateTeacher(string _name, string _familyName, string _email);
     }
 }

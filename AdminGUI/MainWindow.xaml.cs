@@ -16,10 +16,10 @@ namespace AdminGUI
         {
             InitializeComponent();
             df = new DomainFacade();
-            UpdateListView();
+            UpdateCoursesListView();
         }
 
-        public void UpdateListView()
+        public void UpdateCoursesListView()
         {
             lstCourses.Items.Clear();
             foreach (int i in df.GetListOfCourseId())
@@ -29,12 +29,17 @@ namespace AdminGUI
             }
         }
 
+        public void UpdateTeacherListView()
+        {
+            lstTeachers.Items.Clear();
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 df.CreateCourse(txbName.Text, cmbInstance.SelectedIndex + 1, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
-                UpdateListView();
+                UpdateCoursesListView();
             }
             catch (FormatException)
             {

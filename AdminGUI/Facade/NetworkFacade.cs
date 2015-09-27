@@ -28,5 +28,19 @@ namespace AdminGUI.Facade
         {
             proxy.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
         }
+        public List<int> GetListOfTeacherId()
+        {
+            return proxy.GetListOfTeacherId();
+        }
+
+        public List<string> GetTeacherInfo(int _id)
+        {
+            return proxy.GetTeacherInfo(_id);
+        }
+
+        public void CreateTeacher(string _name, string _familyName, string _email)
+        {
+            proxy.CreateTeacher(_name, _familyName, _email);
+        }
     }
 }
