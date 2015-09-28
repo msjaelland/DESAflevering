@@ -13,27 +13,27 @@ namespace Service.Services
     public interface IAdminService
     {
         [OperationContract]
-        List<string> GetCourseInfo(int _id);
+        List<string> GetCourseInfo(int id);
 
         [OperationContract]
         List<int> GetListOfCourseId();
 
         [OperationContract]
-        void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects);
+        void CreateCourse(string name, int instance, int instanceYear, string description, int ects);
 
         [OperationContract]
-        void AssignTeacher(int _teacherId, int _courseId);
+        void AssignTeacher(int teacherId, int courseId);
 
         [OperationContract]
-        void AddCalendarEntry(int _day, string _starthour, string _endhour, int _courseId);
+        void AddCalendarEntry(int day, string starthour, string endhour, int courseId);
 
         [OperationContract]
-        List<string> GetTeacherInfo(int _id);
+        List<string> GetTeacherInfo(int id);
 
         [OperationContract]
         List<int> GetListOfTeacherId();
 
         [OperationContract]
-        void CreateTeacher(string _name, string _familyName, string _email);
+        void CreateTeacher(string name, string familyName, string email);
     }
 }

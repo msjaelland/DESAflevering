@@ -27,85 +27,47 @@ namespace Service.Domain
         }
         #endregion
 
-        public Student CreateStudent(string _name, string _familyName, string _email)
+        public Student CreateStudent(string name, string familyName, string email)
         {
-            Student s = new Student();
-
-            s.Name = _name;
-            s.FamilyName = _familyName;
-            s.Email = _email;
-
-            return s;
+            return new Student
+            {
+                Name = name,
+                FamilyName = familyName,
+                Email = email
+            };
         }
 
-        public CalendarEntry CreateCalendarEntry(int _day, string _startHour, string _endhour, int _courseId)
+        public CalendarEntry CreateCalendarEntry(int day, string startHour, string endhour, int courseId)
         {
-            CalendarEntry c = new CalendarEntry();
-
-            if(_day == 1)
+            return new CalendarEntry
             {
-                c.Day = Day.Monday;
-            }
-            else if(_day == 2)
-            {
-                c.Day = Day.Tuesday;
-            }
-            else if (_day == 3)
-            {
-                c.Day = Day.Wednesday;
-            }
-            else if (_day == 4)
-            {
-                c.Day = Day.Thursday;
-            }
-            else if (_day == 5)
-            {
-                c.Day = Day.Friday;
-            }
-            else if (_day == 6)
-            {
-                c.Day = Day.Saturday;
-            }
-            else if (_day == 7)
-            {
-                c.Day = Day.Sunday;
-            }
-            c.StartHour = _startHour;
-            c.EndHour = _endhour;
-            c.CourseId = _courseId;
-
-            return c;
+                Day = (Day) day,
+                StartHour = startHour,
+                EndHour = endhour,
+                CourseId = courseId
+            };
         }
 
-        public Course CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
+        public Course CreateCourse(string name, int instance, int instanceYear, string description, int ects)
         {
-            Course c = new Course();
-
-            c.Name = _name;
-            if(_instance == 1)
+            return new Course
             {
-                c.Instance = CourseInstance.Spring;
-            }
-            else if(_instance == 2)
-            {
-                c.Instance = CourseInstance.Fall;
-            }
-            c.InstanceYear = _instanceYear;
-            c.Description = _description;
-            c.ECTS = _ects;
-
-            return c;
+                Name = name,
+                Instance = (CourseInstance) instance,
+                InstanceYear = instanceYear,
+                Description = description,
+                ECTS = ects
+            };
         }
 
-        public Teacher CreateTeacher(string _name, string _familyName, string _email)
+        public Teacher CreateTeacher(string name, string familyName, string email)
         {
-            Teacher t = new Teacher();
-
-            t.Name = _name;
-            t.FamilyName = _familyName;
-            t.Email = _email;
-
-            return t;
+            return new Teacher
+            {
+                Name = name,
+                FamilyName = familyName,
+                Email = email
+            };
         }
     }
 }

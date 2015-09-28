@@ -22,7 +22,7 @@ namespace Service.Services
         List<string> GetExams();
 
         [OperationContract]
-        void GradeExam(int _studentId, int _examId, int _grade);
+        void GradeExam(int studentId, int examId, int grade);
 
         [OperationContract]
         List<string> GetGrades();

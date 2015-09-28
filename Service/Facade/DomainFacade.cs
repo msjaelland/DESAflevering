@@ -17,25 +17,25 @@ namespace Service.Facade
             dbf = new DatabaseFacade();
         }
 
-        public void AddCalendarEntry(int _day, string _starthour, string _endhour, int _courseId)
+        public void AddCalendarEntry(int day, string starthour, string endhour, int courseId)
         {
-            dbf.AddCalendarEntry(ObjectFactory.Instance.CreateCalendarEntry(_day, _starthour, _endhour, _courseId));
+            dbf.AddCalendarEntry(ObjectFactory.Instance.CreateCalendarEntry(day, starthour, endhour, courseId));
         }
 
-        public void AssignTeacher(int _teacherId, int _courseId)
+        public void AssignTeacher(int teacherId, int courseId)
         {
-            dbf.AssignTeacher(_teacherId, _courseId);
+            dbf.AssignTeacher(teacherId, courseId);
         }
 
-        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string name, int instance, int instanceYear, string description, int ects)
         {
-            Console.WriteLine(DateTime.Now.TimeOfDay + ": Created course with course name " + _name);
-            dbf.CreateCourse(ObjectFactory.Instance.CreateCourse(_name, _instance, _instanceYear, _description, _ects));
+            Console.WriteLine(DateTime.Now.TimeOfDay + ": Created course with course name " + name);
+            dbf.CreateCourse(ObjectFactory.Instance.CreateCourse(name, instance, instanceYear, description, ects));
         }
 
-        public List<string> GetCourseInfo(int _id)
+        public List<string> GetCourseInfo(int id)
         {
-            return dbf.GetCourseInfo(_id);
+            return dbf.GetCourseInfo(id);
         }
 
         public List<int> GetListOfCourseId()
@@ -48,14 +48,15 @@ namespace Service.Facade
             return dbf.GetListOfTeacherId();
         }
 
-        public List<string> GetTeacherInfo(int _id)
+        public List<string> GetTeacherInfo(int id)
         {
-            return dbf.GetTeacherInfo(_id);
+            return dbf.GetTeacherInfo(id);
         }
 
-        public void CreateTeacher(string _name, string _familyName, string _email)
+        public void CreateTeacher(string name, string familyName, string email)
         {
-            dbf.CreateTeacher(ObjectFactory.Instance.CreateTeacher(_name, _familyName, _email));
+            Console.WriteLine(DateTime.Now.TimeOfDay + ": Created teacher with name " + name + " " + familyName);
+            dbf.CreateTeacher(ObjectFactory.Instance.CreateTeacher(name, familyName, email));
         }
     }
 }

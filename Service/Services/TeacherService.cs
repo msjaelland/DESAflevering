@@ -44,7 +44,7 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public void GradeExam(int _studentId, int _examId, int _grade)
+        public void GradeExam(int studentId, int examId, int grade)
         {
             throw new NotImplementedException();
         }

@@ -17,6 +17,7 @@ namespace AdminGUI
             InitializeComponent();
             nf = new NetworkFacade();
             UpdateCoursesListView();
+            UpdateTeacherComboBox();
             UpdateTeacherListView();
         }
 
@@ -40,6 +41,16 @@ namespace AdminGUI
             }
         }
 
+        public void UpdateTeacherComboBox()
+        {
+            cmbTeacher.Items.Clear();
+            foreach(int i in nf.GetListOfTeacherId())
+            {
+                List<string> teacherInfo = nf.GetTeacherInfo(i);
+                cmbTeacher.Items.Add(teacherInfo[1] + " " + teacherInfo[2]);
+            }
+        }
+
         private void btnSaveCourse_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -59,6 +70,7 @@ namespace AdminGUI
             {
                 nf.CreateTeacher(txbTeacherName.Text, txbFamilyName.Text, txbEmail.Text);
                 UpdateTeacherListView();
+                UpdateTeacherComboBox();
             }
             catch (FormatException)
             {

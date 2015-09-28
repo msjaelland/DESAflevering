@@ -18,51 +18,51 @@ namespace Service.Facade
 
         #region Teacher stuff
 
-        public void CreateTeacher(Teacher _teacher)
+        public void CreateTeacher(Teacher teacher)
         {
-            db.PersonSet.Add(_teacher);
+            db.PersonSet.Add(teacher);
             db.SaveChanges();
         }
 
         public List<int> GetListOfTeacherId()
         {
-            List<int> _teacherIdList = new List<int>();
+            List<int> teacherIdList = new List<int>();
 
             var persons = from p in db.PersonSet select p;
 
             foreach (Teacher t in persons)
             {
-                _teacherIdList.Add(t.Id);
+                teacherIdList.Add(t.Id);
             }
-            return _teacherIdList;
+            return teacherIdList;
         }
 
         public List<string> GetTeacherInfo(int _id)
         {
-            List<string> _teacherInfo = new List<string>();
+            List<string> teacherInfo = new List<string>();
 
-            var _persons = from p in db.PersonSet select p;
+            var persons = from p in db.PersonSet select p;
 
-            foreach (Teacher t in _persons)
+            foreach (Teacher t in persons)
             {
                 if (t.Id == _id)
                 {
-                    _teacherInfo.Add(t.Id.ToString());
-                    _teacherInfo.Add(t.Name);
-                    _teacherInfo.Add(t.FamilyName);
-                    _teacherInfo.Add(t.Email);
+                    teacherInfo.Add(t.Id.ToString());
+                    teacherInfo.Add(t.Name);
+                    teacherInfo.Add(t.FamilyName);
+                    teacherInfo.Add(t.Email);
                 }
             }
-            return _teacherInfo;
+            return teacherInfo;
         }
 
-        public string GetTeacherName(int _id)
+        public string GetTeacherName(int id)
         {
-            var _persons = from p in db.PersonSet select p;
+            var persons = from p in db.PersonSet select p;
 
-            foreach (Teacher t in _persons)
+            foreach (Teacher t in persons)
             {
-                if (t.Id == _id)
+                if (t.Id == id)
                 {
                     return t.Name + t.FamilyName;
                 }
@@ -70,15 +70,15 @@ namespace Service.Facade
             return null;
         }
 
-        public void AssignTeacher(int _teacherId, int _courseId)
+        public void AssignTeacher(int teacherId, int courseId)
         {
-            var _courses = from c in db.CourseSet select c;
+            var courses = from c in db.CourseSet select c;
 
-            foreach (Course c in _courses)
+            foreach (Course c in courses)
             {
-                if (c.Id == _courseId)
+                if (c.Id == courseId)
                 {
-                    c.TeacherId = _teacherId;
+                    c.TeacherId = teacherId;
                     db.SaveChanges();
                 }
             }
@@ -87,65 +87,65 @@ namespace Service.Facade
 
         #region Student stuff
 
-        public void CreateStudent(Student _student)
+        public void CreateStudent(Student student)
         {
-            db.PersonSet.Add(_student);
+            db.PersonSet.Add(student);
             db.SaveChanges();
         }
 
-        public List<string> GetStudentByEmail(string _email)
+        public List<string> GetStudentByEmail(string email)
         {
-            List<string> _studentInfo = new List<string>();
-            var _students = from s in db.PersonSet select s;
+            List<string> studentInfo = new List<string>();
+            var students = from s in db.PersonSet select s;
 
-            foreach (Student s in _students)
+            foreach (Student s in students)
             {
-                if (s.Email == _email)
+                if (s.Email == email)
                 {
-                    _studentInfo.Add(s.Id.ToString());
-                    _studentInfo.Add(s.Name);
-                    _studentInfo.Add(s.FamilyName);
-                    _studentInfo.Add(s.Email);
+                    studentInfo.Add(s.Id.ToString());
+                    studentInfo.Add(s.Name);
+                    studentInfo.Add(s.FamilyName);
+                    studentInfo.Add(s.Email);
                 }
             }
-            return _studentInfo; ;
+            return studentInfo; ;
         }
         #endregion
 
         #region Course stuff
 
-        public void CreateCourse(Course _course)
+        public void CreateCourse(Course course)
         {
-            db.CourseSet.Add(_course);
+            db.CourseSet.Add(course);
             db.SaveChanges();
         }
 
         public List<int> GetListOfCourseId()
         {
-            var _courses = from c in db.CourseSet select c.Id;
+            var courses = from c in db.CourseSet select c.Id;
 
-            return _courses.ToList<int>();
+            return courses.ToList<int>();
         }
 
         public List<string> GetCourseInfo(int _id)
         {
-            List<string> _courseInfo = new List<string>();
+            List<string> courseInfo = new List<string>();
 
-            var _courses = from c in db.CourseSet select c;
+            var courses = from c in db.CourseSet select c;
 
-            foreach (Course c in _courses)
+            foreach (Course c in courses)
             {
                 if (c.Id == _id)
                 {
-                    _courseInfo.Add(c.Id.ToString());
-                    _courseInfo.Add(c.Name);
-                    _courseInfo.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
-                    _courseInfo.Add(c.Description);
-                    _courseInfo.Add(c.ECTS.ToString());
-                    _courseInfo.Add(c.TeacherId.ToString());
-                    _courseInfo.Add(GetTeacherName(c.TeacherId));
+                    courseInfo.Add(c.Id.ToString());
+                    courseInfo.Add(c.Name);
+                    courseInfo.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
+                    courseInfo.Add(c.Description);
+                    courseInfo.Add(c.ECTS.ToString());
+                    courseInfo.Add(c.TeacherId.ToString());
+                    courseInfo.Add(GetTeacherName(c.TeacherId));
 
-                    return _courseInfo;
+                    return courseInfo;
                 }
             }
             return null;

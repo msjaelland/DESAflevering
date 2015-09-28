@@ -14,9 +14,9 @@ namespace AdminGUI.Facade
             proxy = channelFactory.CreateChannel();
         }
 
-        public List<string> GetCourseInfo(int _id)
+        public List<string> GetCourseInfo(int id)
         {
-            return proxy.GetCourseInfo(_id);
+            return proxy.GetCourseInfo(id);
         }
 
         public List<int> GetListOfCourseId()
@@ -24,23 +24,23 @@ namespace AdminGUI.Facade
             return proxy.GetListOfCourseId();
         }
 
-        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string name, int instance, int instanceYear, string description, int ects)
         {
-            proxy.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
+            proxy.CreateCourse(name, instance, instanceYear, description, ects);
         }
         public List<int> GetListOfTeacherId()
         {
             return proxy.GetListOfTeacherId();
         }
 
-        public List<string> GetTeacherInfo(int _id)
+        public List<string> GetTeacherInfo(int id)
         {
-            return proxy.GetTeacherInfo(_id);
+            return proxy.GetTeacherInfo(id);
         }
 
-        public void CreateTeacher(string _name, string _familyName, string _email)
+        public void CreateTeacher(string name, string familyName, string email)
         {
-            proxy.CreateTeacher(_name, _familyName, _email);
+            proxy.CreateTeacher(name, familyName, email);
         }
     }
 }

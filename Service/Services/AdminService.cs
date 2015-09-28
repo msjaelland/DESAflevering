@@ -19,24 +19,24 @@ namespace Service.Services
             df = new DomainFacade();
         }
 
-        public void AddCalendarEntry(int _day, string _starthour, string _endhour, int _courseId)
+        public void AddCalendarEntry(int day, string starthour, string endhour, int courseId)
         {
-            df.AddCalendarEntry(_day, _starthour, _endhour, _courseId);
+            df.AddCalendarEntry(day, starthour, endhour, courseId);
         }
 
-        public void AssignTeacher(int _teacherId, int _courseId)
+        public void AssignTeacher(int teacherId, int courseId)
         {
-            df.AssignTeacher(_teacherId, _courseId);
+            df.AssignTeacher(teacherId, courseId);
         }
 
-        public void CreateCourse(string _name, int _instance, int _instanceYear, string _description, int _ects)
+        public void CreateCourse(string name, int instance, int instanceYear, string description, int ects)
         {
-            df.CreateCourse(_name, _instance, _instanceYear, _description, _ects);
+            df.CreateCourse(name, instance, instanceYear, description, ects);
         }
 
-        public List<string> GetCourseInfo(int _id)
+        public List<string> GetCourseInfo(int id)
         {
-            return df.GetCourseInfo(_id);
+            return df.GetCourseInfo(id);
         }
 
         public List<int> GetListOfCourseId()
@@ -48,14 +48,14 @@ namespace Service.Services
             return df.GetListOfTeacherId();
         }
 
-        public List<string> GetTeacherInfo(int _id)
+        public List<string> GetTeacherInfo(int id)
         {
-            return df.GetTeacherInfo(_id);
+            return df.GetTeacherInfo(id);
         }
 
-        public void CreateTeacher(string _name, string _familyName, string _email)
+        public void CreateTeacher(string name, string familyName, string email)
         {
-            df.CreateTeacher(_name, _familyName, _email);
+            df.CreateTeacher(name, familyName, email);
         }
     }
 }
