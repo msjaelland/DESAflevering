@@ -53,15 +53,19 @@ namespace AdminGUI
 
         private void btnSaveCourse_Click(object sender, RoutedEventArgs e)
         {
+
+            int i = cmbInstance.SelectedIndex + 1;
+
             try
             {
-                nf.CreateCourse(txbName.Text, cmbInstance.SelectedIndex + 1, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
+                nf.CreateCourse(txbName.Text, i, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
                 UpdateCoursesListView();
             }
             catch (FormatException)
             {
                 MessageBox.Show("Some of the filled textfield doesn't match the required input. Please fill out form correctly.");
             }
+
         }
 
         private void buttonSaveTeacher_Click(object sender, RoutedEventArgs e)

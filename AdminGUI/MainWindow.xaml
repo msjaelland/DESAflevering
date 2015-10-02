@@ -28,8 +28,8 @@
                 <Label x:Name="label2" Content="Course name" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="txbInstanceYear" HorizontalAlignment="Left" Height="31" Margin="115,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" FontSize="16"/>
                 <ComboBox x:Name="cmbInstance" HorizontalAlignment="Left" Margin="115,102,0,0" VerticalAlignment="Top" Width="185" Height="30">
-                    <ComboBoxItem Name="cmbiSpring">Spring</ComboBoxItem>
                     <ComboBoxItem Name="cmbiFall">Fall</ComboBoxItem>
+                    <ComboBoxItem Name="cmbiSpring">Spring</ComboBoxItem>
                 </ComboBox>
                 <Label x:Name="label2_Copy" Content="Instance" HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label2_Copy1" Content="Instance year" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top"/>

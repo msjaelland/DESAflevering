@@ -13,7 +13,10 @@ namespace Service.Services
     public interface ITeacherService
     {
         [OperationContract]
-        List<string> GetStudentsForCourse();
+        List<int> GetStudentIdsForCourse(int courseId);
+
+        [OperationContract]
+        List<string> GetStudentInfo(int id);
 
         [OperationContract]
         void CreateExam();
@@ -29,5 +32,11 @@ namespace Service.Services
 
         [OperationContract]
         List<string> GetCourses();
+
+        [OperationContract]
+        List<int> GetListOfCourseId();
+
+        [OperationContract]
+        List<string> GetCourseInfo(int id);
     }
 }

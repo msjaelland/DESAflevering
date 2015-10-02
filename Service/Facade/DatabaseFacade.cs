@@ -30,9 +30,12 @@ namespace Service.Facade
 
             var persons = from p in db.PersonSet select p;
 
-            foreach (Teacher t in persons)
+            foreach (Person p in persons)
             {
-                teacherIdList.Add(t.Id);
+                if(p is Teacher)
+                {
+                    teacherIdList.Add(p.Id);
+                }
             }
             return teacherIdList;
         }
@@ -43,14 +46,14 @@ namespace Service.Facade
 
             var persons = from p in db.PersonSet select p;
 
-            foreach (Teacher t in persons)
+            foreach (Person p in persons)
             {
-                if (t.Id == _id)
+                if (p.Id == _id && p is Teacher)
                 {
-                    teacherInfo.Add(t.Id.ToString());
-                    teacherInfo.Add(t.Name);
-                    teacherInfo.Add(t.FamilyName);
-                    teacherInfo.Add(t.Email);
+                    teacherInfo.Add(p.Id.ToString());
+                    teacherInfo.Add(p.Name);
+                    teacherInfo.Add(p.FamilyName);
+                    teacherInfo.Add(p.Email);
                 }
             }
             return teacherInfo;
@@ -60,11 +63,11 @@ namespace Service.Facade
         {
             var persons = from p in db.PersonSet select p;
 
-            foreach (Teacher t in persons)
+            foreach (Person p in persons)
             {
-                if (t.Id == id)
+                if (p.Id == id && p is Teacher)
                 {
-                    return t.Name + t.FamilyName;
+                    return p.Name + p.FamilyName;
                 }
             }
             return null;
@@ -93,19 +96,37 @@ namespace Service.Facade
             db.SaveChanges();
         }
 
+        public List<string> GetStudentInfo(int id)
+        {
+            List<string> studentInfo = new List<string>();
+            var persons = from p in db.PersonSet select p;
+
+            foreach (Person p in persons)
+            {
+                if (p.Id == id && p is Teacher)
+                {
+                    studentInfo.Add(p.Id.ToString());
+                    studentInfo.Add(p.Name);
+                    studentInfo.Add(p.FamilyName);
+                    studentInfo.Add(p.Email);
+                }
+            }
+            return studentInfo;
+        }
+
         public List<string> GetStudentByEmail(string email)
         {
             List<string> studentInfo = new List<string>();
-            var students = from s in db.PersonSet select s;
+            var persons = from p in db.PersonSet select p;
 
-            foreach (Student s in students)
+            foreach (Person p in persons)
             {
-                if (s.Email == email)
+                if (p.Email == email && p is Student)
                 {
-                    studentInfo.Add(s.Id.ToString());
-                    studentInfo.Add(s.Name);
-                    studentInfo.Add(s.FamilyName);
-                    studentInfo.Add(s.Email);
+                    studentInfo.Add(p.Id.ToString());
+                    studentInfo.Add(p.Name);
+                    studentInfo.Add(p.FamilyName);
+                    studentInfo.Add(p.Email);
                 }
             }
             return studentInfo; ;
@@ -127,7 +148,7 @@ namespace Service.Facade
             return courses.ToList<int>();
         }
 
-        public List<string> GetCourseInfo(int _id)
+        public List<string> GetCourseInfo(int id)
         {
             List<string> courseInfo = new List<string>();
 
@@ -135,7 +156,7 @@ namespace Service.Facade
 
             foreach (Course c in courses)
             {
-                if (c.Id == _id)
+                if (c.Id == id)
                 {
                     courseInfo.Add(c.Id.ToString());
                     courseInfo.Add(c.Name);
@@ -149,6 +170,30 @@ namespace Service.Facade
                 }
             }
             return null;
+        }
+
+        public List<int> GetStudentIdsForCourse(int courseId)
+        {
+            List<Student> studentList = new List<Student>();
+            List<int> studentIds = new List<int>();
+
+            var courses = from c in db.CourseSet select c;
+            
+            foreach(Course c in courses)
+            {
+                if(c.Id == courseId)
+                {
+                    studentList = c.Student.ToList();
+                    foreach(Person p in studentList)
+                    {
+                        if(p is Student)
+                        {
+                            studentIds.Add(p.Id);
+                        }
+                    }
+                }
+            }
+            return studentIds;
         }
         #endregion
 

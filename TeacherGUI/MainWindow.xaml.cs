@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeacherGUI.Facade;
 
 namespace TeacherGUI
 {
@@ -20,9 +21,28 @@ namespace TeacherGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        NetworkFacade nf;
+
         public MainWindow()
         {
             InitializeComponent();
+            nf = new NetworkFacade();
+            UpdateCoursesListView();
+        }
+
+        public void UpdateCoursesListView()
+        {
+            lstCourses.Items.Clear();
+            foreach (int i in nf.GetListOfCourseId())
+            {
+                List<string> courseInfo = nf.GetCourseInfo(i);
+                lstCourses.Items.Add(courseInfo);
+            }
+        }
+
+        private void lstCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lstViewStudents.Items.Clear();
         }
     }
 }

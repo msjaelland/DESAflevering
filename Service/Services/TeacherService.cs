@@ -24,6 +24,11 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
+        public List<string> GetCourseInfo(int id)
+        {
+            return df.GetCourseInfo(id);
+        }
+
         public List<string> GetCourses()
         {
             throw new NotImplementedException();
@@ -39,14 +44,24 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public List<string> GetStudentsForCourse()
+        public List<int> GetListOfCourseId()
         {
-            throw new NotImplementedException();
+            return df.GetListOfCourseId();
+        }
+
+        public List<int> GetStudentIdsForCourse(int courseId)
+        {
+            return df.GetStudentIdsForCourse(courseId);
         }
 
         public void GradeExam(int studentId, int examId, int grade)
         {
             throw new NotImplementedException();
+        }
+
+        public List<string> GetStudentInfo(int id)
+        {
+            return df.GetStudentInfo(id);
         }
     }
 }
