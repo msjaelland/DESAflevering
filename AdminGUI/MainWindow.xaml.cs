@@ -19,6 +19,7 @@ namespace AdminGUI
             UpdateCoursesListView();
             UpdateTeacherComboBox();
             UpdateTeacherListView();
+
         }
 
         public void UpdateCoursesListView()
@@ -53,12 +54,9 @@ namespace AdminGUI
 
         private void btnSaveCourse_Click(object sender, RoutedEventArgs e)
         {
-
-            int i = cmbInstance.SelectedIndex + 1;
-
             try
             {
-                nf.CreateCourse(txbName.Text, i, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
+                nf.CreateCourse(txbName.Text, cmbInstance.SelectedIndex + 1, Int32.Parse(txbInstanceYear.Text), txbDescription.Text, Int32.Parse(txbEcts.Text));
                 UpdateCoursesListView();
             }
             catch (FormatException)

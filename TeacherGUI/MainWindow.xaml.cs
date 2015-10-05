@@ -42,7 +42,13 @@ namespace TeacherGUI
 
         private void lstCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            List<string> fetchedCourseId = (List<string>)lstCourses.SelectedItem;
             lstViewStudents.Items.Clear();
+
+            foreach(int i in nf.GetStudentIdsForCourse(Int32.Parse(fetchedCourseId[0]))){
+                List<string> studentInfo = nf.GetStudentInfo(i);
+                lstViewStudents.Items.Add(studentInfo);
+            }
         }
     }
 }
