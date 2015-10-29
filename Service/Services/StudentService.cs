@@ -26,14 +26,24 @@ namespace Service.Services
             df.CreateStudent(name, familyName, email);
         }
 
-        public void SignUpForCourse(Course course)
+        public void SignUpForCourse(int StudentID, int CourseID)
         {
-            student.Course.Add(course);
+            throw new NotImplementedException();
         }
 
-        public void UnregisterFromCourse(Course course)
+        public void SignUpForExam(int StudentID, int ExamID)
         {
-            student.Course.Remove(course);
+            throw new NotImplementedException();
+        }
+
+        public void UnregisterFromCourse(int StudentID, int CourseID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<int, int> ViewAllMyGrades(int StudentID)
+        {
+            throw new NotImplementedException();
         }
 
         public void ViewCourseSchedule()
@@ -41,17 +51,7 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public void SignUpForExam(Exam exam)
-        {
-            student.Exam.Add(exam);
-        }
-
         public int ViewMyGrade(int ExamID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Dictionary<int, int> ViewAllMyGrades(int StudentID)
         {
             throw new NotImplementedException();
         }

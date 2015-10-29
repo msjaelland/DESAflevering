@@ -33,7 +33,7 @@ namespace StudentGUI
 
         private void Register_Click(object sender, EventArgs e)
         {
-            proxy.Register(RegisterFirstName.ToString(), RegisterFamilyName.ToString(), RegisterEmail.ToString());
+            proxy.Register(RegisterFirstName.Text.ToString(), RegisterFamilyName.Text.ToString(), RegisterEmail.Text.ToString());
         }
     }
 }
