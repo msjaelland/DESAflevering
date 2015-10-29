@@ -137,6 +137,8 @@ namespace Service.Facade
             }
             return studentInfo; ;
         }
+
+        
         #endregion
 
         #region Course stuff

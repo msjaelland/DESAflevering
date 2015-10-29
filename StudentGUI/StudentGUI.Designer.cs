@@ -40,30 +40,30 @@
             this.RegisterFirstName = new System.Windows.Forms.TextBox();
             this.RegisterFamilyName = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CourseUnregisterButton = new System.Windows.Forms.Button();
+            this.CourseSignUpButton = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.treeView2 = new System.Windows.Forms.TreeView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.AvailableCoursesTreeView = new System.Windows.Forms.TreeView();
+            this.MyCoursesTreeView = new System.Windows.Forms.TreeView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.ExamTreeView = new System.Windows.Forms.TreeView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ExamSignUpButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.treeView3 = new System.Windows.Forms.TreeView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.MyExamsTreeView = new System.Windows.Forms.TreeView();
+            this.AllMyGradesTextField = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.GradeLabel = new System.Windows.Forms.Label();
+            this.ExamLabel = new System.Windows.Forms.Label();
+            this.AllGradesLabel = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.CourseScheduleTextField = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -208,8 +208,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.CourseUnregisterButton);
+            this.tabPage3.Controls.Add(this.CourseSignUpButton);
             this.tabPage3.Controls.Add(this.splitContainer2);
             this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -219,23 +219,23 @@
             this.tabPage3.Text = "Courses";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // CourseUnregisterButton
             // 
-            this.button2.Location = new System.Drawing.Point(410, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Unregister";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CourseUnregisterButton.Location = new System.Drawing.Point(410, 206);
+            this.CourseUnregisterButton.Name = "CourseUnregisterButton";
+            this.CourseUnregisterButton.Size = new System.Drawing.Size(75, 23);
+            this.CourseUnregisterButton.TabIndex = 3;
+            this.CourseUnregisterButton.Text = "Unregister";
+            this.CourseUnregisterButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // CourseSignUpButton
             // 
-            this.button1.Location = new System.Drawing.Point(110, 206);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Sign up";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CourseSignUpButton.Location = new System.Drawing.Point(110, 206);
+            this.CourseSignUpButton.Name = "CourseSignUpButton";
+            this.CourseSignUpButton.Size = new System.Drawing.Size(75, 23);
+            this.CourseSignUpButton.TabIndex = 2;
+            this.CourseSignUpButton.Text = "Sign up";
+            this.CourseSignUpButton.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -288,30 +288,30 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.treeView2);
+            this.splitContainer3.Panel1.Controls.Add(this.AvailableCoursesTreeView);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.treeView1);
+            this.splitContainer3.Panel2.Controls.Add(this.MyCoursesTreeView);
             this.splitContainer3.Size = new System.Drawing.Size(586, 162);
             this.splitContainer3.SplitterDistance = 294;
             this.splitContainer3.TabIndex = 0;
             // 
-            // treeView2
+            // AvailableCoursesTreeView
             // 
-            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(0, 0);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(294, 162);
-            this.treeView2.TabIndex = 0;
+            this.AvailableCoursesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AvailableCoursesTreeView.Location = new System.Drawing.Point(0, 0);
+            this.AvailableCoursesTreeView.Name = "AvailableCoursesTreeView";
+            this.AvailableCoursesTreeView.Size = new System.Drawing.Size(294, 162);
+            this.AvailableCoursesTreeView.TabIndex = 0;
             // 
-            // treeView1
+            // MyCoursesTreeView
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(288, 162);
-            this.treeView1.TabIndex = 0;
+            this.MyCoursesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MyCoursesTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MyCoursesTreeView.Name = "MyCoursesTreeView";
+            this.MyCoursesTreeView.Size = new System.Drawing.Size(288, 162);
+            this.MyCoursesTreeView.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -335,7 +335,7 @@
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.button3);
+            this.splitContainer4.Panel2.Controls.Add(this.ExamSignUpButton);
             this.splitContainer4.Size = new System.Drawing.Size(589, 241);
             this.splitContainer4.SplitterDistance = 287;
             this.splitContainer4.TabIndex = 0;
@@ -348,14 +348,14 @@
             this.ExamTreeView.Size = new System.Drawing.Size(287, 241);
             this.ExamTreeView.TabIndex = 0;
             // 
-            // button3
+            // ExamSignUpButton
             // 
-            this.button3.Location = new System.Drawing.Point(107, 187);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Sign up";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ExamSignUpButton.Location = new System.Drawing.Point(107, 187);
+            this.ExamSignUpButton.Name = "ExamSignUpButton";
+            this.ExamSignUpButton.Size = new System.Drawing.Size(75, 23);
+            this.ExamSignUpButton.TabIndex = 0;
+            this.ExamSignUpButton.Text = "Sign up";
+            this.ExamSignUpButton.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -377,32 +377,32 @@
             // 
             // splitContainer6.Panel1
             // 
-            this.splitContainer6.Panel1.Controls.Add(this.treeView3);
+            this.splitContainer6.Panel1.Controls.Add(this.MyExamsTreeView);
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.textBox4);
+            this.splitContainer6.Panel2.Controls.Add(this.AllMyGradesTextField);
             this.splitContainer6.Size = new System.Drawing.Size(583, 182);
             this.splitContainer6.SplitterDistance = 263;
             this.splitContainer6.TabIndex = 1;
             // 
-            // treeView3
+            // MyExamsTreeView
             // 
-            this.treeView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView3.Location = new System.Drawing.Point(0, 0);
-            this.treeView3.Name = "treeView3";
-            this.treeView3.Size = new System.Drawing.Size(263, 182);
-            this.treeView3.TabIndex = 0;
+            this.MyExamsTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MyExamsTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MyExamsTreeView.Name = "MyExamsTreeView";
+            this.MyExamsTreeView.Size = new System.Drawing.Size(263, 182);
+            this.MyExamsTreeView.TabIndex = 0;
             // 
-            // textBox4
+            // AllMyGradesTextField
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(0, 0);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(316, 182);
-            this.textBox4.TabIndex = 0;
+            this.AllMyGradesTextField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AllMyGradesTextField.Location = new System.Drawing.Point(0, 0);
+            this.AllMyGradesTextField.Multiline = true;
+            this.AllMyGradesTextField.Name = "AllMyGradesTextField";
+            this.AllMyGradesTextField.ReadOnly = true;
+            this.AllMyGradesTextField.Size = new System.Drawing.Size(316, 182);
+            this.AllMyGradesTextField.TabIndex = 0;
             // 
             // panel2
             // 
@@ -421,46 +421,46 @@
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.label8);
-            this.splitContainer5.Panel1.Controls.Add(this.label7);
+            this.splitContainer5.Panel1.Controls.Add(this.GradeLabel);
+            this.splitContainer5.Panel1.Controls.Add(this.ExamLabel);
             // 
             // splitContainer5.Panel2
             // 
-            this.splitContainer5.Panel2.Controls.Add(this.label6);
+            this.splitContainer5.Panel2.Controls.Add(this.AllGradesLabel);
             this.splitContainer5.Size = new System.Drawing.Size(583, 53);
             this.splitContainer5.SplitterDistance = 262;
             this.splitContainer5.TabIndex = 0;
             // 
-            // label8
+            // GradeLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Grade: ";
+            this.GradeLabel.AutoSize = true;
+            this.GradeLabel.Location = new System.Drawing.Point(15, 21);
+            this.GradeLabel.Name = "GradeLabel";
+            this.GradeLabel.Size = new System.Drawing.Size(42, 13);
+            this.GradeLabel.TabIndex = 1;
+            this.GradeLabel.Text = "Grade: ";
             // 
-            // label7
+            // ExamLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(109, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Exam:";
+            this.ExamLabel.AutoSize = true;
+            this.ExamLabel.Location = new System.Drawing.Point(109, 21);
+            this.ExamLabel.Name = "ExamLabel";
+            this.ExamLabel.Size = new System.Drawing.Size(36, 13);
+            this.ExamLabel.TabIndex = 0;
+            this.ExamLabel.Text = "Exam:";
             // 
-            // label6
+            // AllGradesLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(148, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "All my grades";
+            this.AllGradesLabel.AutoSize = true;
+            this.AllGradesLabel.Location = new System.Drawing.Point(148, 21);
+            this.AllGradesLabel.Name = "AllGradesLabel";
+            this.AllGradesLabel.Size = new System.Drawing.Size(69, 13);
+            this.AllGradesLabel.TabIndex = 0;
+            this.AllGradesLabel.Text = "All my grades";
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.textBox5);
+            this.tabPage5.Controls.Add(this.CourseScheduleTextField);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -469,15 +469,15 @@
             this.tabPage5.Text = "Course Schedule";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // CourseScheduleTextField
             // 
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Location = new System.Drawing.Point(3, 3);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(583, 235);
-            this.textBox5.TabIndex = 0;
+            this.CourseScheduleTextField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CourseScheduleTextField.Location = new System.Drawing.Point(3, 3);
+            this.CourseScheduleTextField.Multiline = true;
+            this.CourseScheduleTextField.Name = "CourseScheduleTextField";
+            this.CourseScheduleTextField.ReadOnly = true;
+            this.CourseScheduleTextField.Size = new System.Drawing.Size(583, 235);
+            this.CourseScheduleTextField.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
@@ -554,26 +554,26 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CourseUnregisterButton;
+        private System.Windows.Forms.Button CourseSignUpButton;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.TreeView treeView2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView AvailableCoursesTreeView;
+        private System.Windows.Forms.TreeView MyCoursesTreeView;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.TreeView ExamTreeView;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ExamSignUpButton;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label AllGradesLabel;
         private System.Windows.Forms.SplitContainer splitContainer6;
-        private System.Windows.Forms.TreeView treeView3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TreeView MyExamsTreeView;
+        private System.Windows.Forms.TextBox AllMyGradesTextField;
+        private System.Windows.Forms.Label GradeLabel;
+        private System.Windows.Forms.Label ExamLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox CourseScheduleTextField;
     }
 }
 

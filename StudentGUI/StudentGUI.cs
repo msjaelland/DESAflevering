@@ -10,20 +10,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Service;
 using Service.Services;
-
+using StudentGUI.Facade;
 
 namespace StudentGUI
 {
     public partial class StudentGUI : Form
-    {
-        ChannelFactory<IStudentService> channelFactory = new ChannelFactory<IStudentService>("StudentServiceEndpoint");
-        IStudentService proxy;
+        {
+
+        NetworkFacade nf; 
+
+        //ChannelFactory<IStudentService> channelFactory = new ChannelFactory<IStudentService>("StudentServiceEndpoint");
+        //IStudentService proxy;
 
         public StudentGUI()
         {
-            proxy = channelFactory.CreateChannel();
+            //proxy = channelFactory.CreateChannel();
             InitializeComponent();
-            LoadExams();
+            nf = new NetworkFacade(); 
         }
 
       
@@ -34,9 +37,10 @@ namespace StudentGUI
 
         private void Register_Click(object sender, EventArgs e)
         {
-            proxy.Register(RegisterFirstName.Text.ToString(), RegisterFamilyName.Text.ToString(), RegisterEmail.Text.ToString());
+            nf.Register(RegisterFirstName.Text.ToString(), RegisterFamilyName.Text.ToString(), RegisterEmail.Text.ToString());
         }
 
+        /*
         private void LoadExams()
         {
             foreach (var entry in proxy.getAvailableExams())
@@ -45,8 +49,7 @@ namespace StudentGUI
                 courseNode.Nodes.Add(entry.Value.ToString());
             }
             
-            
-            
         }
+        */
     }
 }

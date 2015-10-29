@@ -18,6 +18,7 @@ namespace Service.Services
 
         public StudentService()
         {
+
             df = new DomainFacade(); 
         }
 
@@ -60,14 +61,15 @@ namespace Service.Services
         public Dictionary<string, int> getAvailableExams()
         {
             Dictionary<string, int> availbableExams = new Dictionary<string, int>();
-            foreach (var i in student.Course)
-            {
-
-                foreach (var j in i.Exam)
+            if(student.Exam!=null)
+                foreach (var i in student.Course)
                 {
-                    availbableExams.Add(i.Name, j.Id);
-                }
-            }
+
+                    foreach (var j in i.Exam)
+                    {
+                     availbableExams.Add(i.Name, j.Id);
+                    }
+             }
             return availbableExams;
         }
     }

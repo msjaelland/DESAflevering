@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\NetworkFacade.cs" />
     <Compile Include="StudentGUI.cs">
       <SubType>Form</SubType>
     </Compile>
