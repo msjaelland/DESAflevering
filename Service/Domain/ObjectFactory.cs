@@ -69,5 +69,7 @@ namespace Service.Domain
                 Email = email
             };
         }
+
+       
     }
 }

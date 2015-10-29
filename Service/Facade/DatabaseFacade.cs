@@ -96,6 +96,12 @@ namespace Service.Facade
             db.SaveChanges();
         }
 
+        public void AddStudentExam(Exam exam)
+        {
+            db.ExamSet.Add(exam);
+            db.SaveChanges();
+        }
+
         public List<string> GetStudentInfo(int id)
         {
             List<string> studentInfo = new List<string>();

@@ -28,6 +28,7 @@ namespace Service.Services
 
         public void SignUpForCourse(int StudentID, int CourseID)
         {
+            
             throw new NotImplementedException();
         }
 
@@ -54,6 +55,20 @@ namespace Service.Services
         public int ViewMyGrade(int ExamID)
         {
             throw new NotImplementedException();
+        }
+
+        public Dictionary<string, int> getAvailableExams()
+        {
+            Dictionary<string, int> availbableExams = new Dictionary<string, int>();
+            foreach (var i in student.Course)
+            {
+
+                foreach (var j in i.Exam)
+                {
+                    availbableExams.Add(i.Name, j.Id);
+                }
+            }
+            return availbableExams;
         }
     }
 }

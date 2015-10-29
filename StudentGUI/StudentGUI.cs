@@ -23,6 +23,7 @@ namespace StudentGUI
         {
             proxy = channelFactory.CreateChannel();
             InitializeComponent();
+            LoadExams();
         }
 
       
@@ -34,6 +35,18 @@ namespace StudentGUI
         private void Register_Click(object sender, EventArgs e)
         {
             proxy.Register(RegisterFirstName.Text.ToString(), RegisterFamilyName.Text.ToString(), RegisterEmail.Text.ToString());
+        }
+
+        private void LoadExams()
+        {
+            foreach (var entry in proxy.getAvailableExams())
+            {
+                TreeNode courseNode = ExamTreeView.Nodes.Add(entry.Key);
+                courseNode.Nodes.Add(entry.Value.ToString());
+            }
+            
+            
+            
         }
     }
 }

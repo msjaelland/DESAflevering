@@ -74,5 +74,7 @@ namespace Service.Facade
             Console.WriteLine(DateTime.Now.TimeOfDay + ": Created student with name " + name + " " + familyName);
             dbf.CreateStudent(ObjectFactory.Instance.CreateStudent(name, familyName, email));
         }
+
+
     }
 }

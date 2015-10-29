@@ -31,5 +31,8 @@ namespace Service.Services
 
         [OperationContract]
         Dictionary<int, int> ViewAllMyGrades(int StudentID);
-    }
+
+	    [OperationContract]
+	    Dictionary<string, int> getAvailableExams();
+	}
 }

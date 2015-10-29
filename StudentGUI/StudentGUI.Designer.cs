@@ -51,7 +51,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.treeView4 = new System.Windows.Forms.TreeView();
+            this.ExamTreeView = new System.Windows.Forms.TreeView();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
@@ -331,7 +331,7 @@
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.treeView4);
+            this.splitContainer4.Panel1.Controls.Add(this.ExamTreeView);
             // 
             // splitContainer4.Panel2
             // 
@@ -340,17 +340,17 @@
             this.splitContainer4.SplitterDistance = 287;
             this.splitContainer4.TabIndex = 0;
             // 
-            // treeView4
+            // ExamTreeView
             // 
-            this.treeView4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView4.Location = new System.Drawing.Point(0, 0);
-            this.treeView4.Name = "treeView4";
-            this.treeView4.Size = new System.Drawing.Size(287, 241);
-            this.treeView4.TabIndex = 0;
+            this.ExamTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExamTreeView.Location = new System.Drawing.Point(0, 0);
+            this.ExamTreeView.Name = "ExamTreeView";
+            this.ExamTreeView.Size = new System.Drawing.Size(287, 241);
+            this.ExamTreeView.TabIndex = 0;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(103, 113);
+            this.button3.Location = new System.Drawing.Point(107, 187);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 0;
@@ -560,7 +560,7 @@
         private System.Windows.Forms.TreeView treeView2;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.TreeView treeView4;
+        private System.Windows.Forms.TreeView ExamTreeView;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel2;
