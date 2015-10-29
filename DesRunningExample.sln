@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGUI", "AdminGUI\AdminG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherGUI", "TeacherGUI\TeacherGUI.csproj", "{36307941-277F-4462-93E3-38454F86E19B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentGUI", "StudentGUI\StudentGUI.csproj", "{783AF547-979D-4066-88E7-E96FE2512EC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{36307941-277F-4462-93E3-38454F86E19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36307941-277F-4462-93E3-38454F86E19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36307941-277F-4462-93E3-38454F86E19B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783AF547-979D-4066-88E7-E96FE2512EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783AF547-979D-4066-88E7-E96FE2512EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783AF547-979D-4066-88E7-E96FE2512EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783AF547-979D-4066-88E7-E96FE2512EC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

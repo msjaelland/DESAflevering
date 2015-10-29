@@ -113,7 +113,7 @@ namespace Service.Facade
             }
             return studentInfo;
         }
-
+        
         public List<string> GetStudentByEmail(string email)
         {
             List<string> studentInfo = new List<string>();
@@ -144,7 +144,6 @@ namespace Service.Facade
         public List<int> GetListOfCourseId()
         {
             var courses = from c in db.CourseSet select c.Id;
-
             return courses.ToList<int>();
         }
 
