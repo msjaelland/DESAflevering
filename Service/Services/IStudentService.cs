@@ -18,6 +18,15 @@ namespace Service.Services
         void SignUpForCourse(int StudentID, int CourseID);
 
         [OperationContract]
+        int GetStudentIdByEmail(string email);
+
+        [OperationContract]
+        List<int> GetListOfCourseID();
+
+        [OperationContract]
+        List<string> GetStudentByEmail(string email);
+        
+        [OperationContract]
         void UnregisterFromCourse(int StudentID, int CourseID);
 
         [OperationContract]

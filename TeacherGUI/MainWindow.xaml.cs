@@ -22,6 +22,7 @@ namespace TeacherGUI
     public partial class MainWindow : Window
     {
         NetworkFacade nf;
+        
 
         public MainWindow()
         {
@@ -48,6 +49,8 @@ namespace TeacherGUI
             foreach(int i in nf.GetStudentIdsForCourse(Int32.Parse(fetchedCourseId[0]))){
                 List<string> studentInfo = nf.GetStudentInfo(i);
                 lstViewStudents.Items.Add(studentInfo);
+                Console.WriteLine(studentInfo);
+               
             }
         }
     }

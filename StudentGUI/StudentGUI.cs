@@ -15,41 +15,44 @@ using StudentGUI.Facade;
 namespace StudentGUI
 {
     public partial class StudentGUI : Form
-        {
+    {
 
-        NetworkFacade nf; 
-
-        //ChannelFactory<IStudentService> channelFactory = new ChannelFactory<IStudentService>("StudentServiceEndpoint");
-        //IStudentService proxy;
+        NetworkFacade nf;
+        int currentStudentId;
 
         public StudentGUI()
         {
             //proxy = channelFactory.CreateChannel();
             InitializeComponent();
-            nf = new NetworkFacade(); 
-        }
-
-      
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
+            nf = new NetworkFacade();
 
         }
+
 
         private void Register_Click(object sender, EventArgs e)
         {
             nf.Register(RegisterFirstName.Text.ToString(), RegisterFamilyName.Text.ToString(), RegisterEmail.Text.ToString());
         }
 
-        /*
+
         private void LoadExams()
         {
-            foreach (var entry in proxy.getAvailableExams())
+            foreach (var entry in nf.getAvailableExams())
             {
                 TreeNode courseNode = ExamTreeView.Nodes.Add(entry.Key);
                 courseNode.Nodes.Add(entry.Value.ToString());
             }
-            
+
         }
-        */
+
+        private void signIn_Click(object sender, EventArgs e)
+        {
+            currentStudentId = nf.GetStudentIdByEmail(EmailTextBox.Text);
+        }
+
+        private void signUp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

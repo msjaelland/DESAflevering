@@ -64,6 +64,16 @@ namespace Service.Facade
             return dbf.GetStudentIdsForCourse(courseId);
         }
 
+        public int GetStudentIdByEmail(string email)
+        {
+            return dbf.GetStudentIdByEmail(email);
+        }
+
+        public List<string> GetStudentByEmail(string email)
+        {
+            return dbf.GetStudentByEmail(email);
+        }
+
         public List<string> GetStudentInfo(int id)
         {
             return dbf.GetStudentInfo(id);

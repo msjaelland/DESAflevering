@@ -32,7 +32,7 @@ namespace Service.Facade
 
             foreach (Person p in persons)
             {
-                if(p is Teacher)
+                if (p is Teacher)
                 {
                     teacherIdList.Add(p.Id);
                 }
@@ -119,7 +119,28 @@ namespace Service.Facade
             }
             return studentInfo;
         }
-        
+
+        public int GetStudentIdByEmail(string email)
+        {
+            int studentId;
+            var persons = from p in db.PersonSet select p;
+
+            foreach (Person p in persons)
+            {
+                if (p.Email == email && p is Student)
+                {
+                    studentId = p.Id;
+                    return studentId;
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("There are no users with that e-mail");
+                }
+            }
+
+            return 0;
+        }
+
         public List<string> GetStudentByEmail(string email)
         {
             List<string> studentInfo = new List<string>();
@@ -130,15 +151,15 @@ namespace Service.Facade
                 if (p.Email == email && p is Student)
                 {
                     studentInfo.Add(p.Id.ToString());
-                    studentInfo.Add(p.Name);
-                    studentInfo.Add(p.FamilyName);
-                    studentInfo.Add(p.Email);
+                    //studentInfo.Add(p.Name);
+                    //studentInfo.Add(p.FamilyName);
+                    //studentInfo.Add(p.Email);
                 }
             }
-            return studentInfo; ;
+            return studentInfo;
         }
 
-        
+
         #endregion
 
         #region Course stuff
@@ -185,15 +206,15 @@ namespace Service.Facade
             List<int> studentIds = new List<int>();
 
             var courses = from c in db.CourseSet select c;
-            
-            foreach(Course c in courses)
+
+            foreach (Course c in courses)
             {
-                if(c.Id == courseId)
+                if (c.Id == courseId)
                 {
                     studentList = c.Student.ToList();
-                    foreach(Person p in studentList)
+                    foreach (Person p in studentList)
                     {
-                        if(p is Student)
+                        if (p is Student)
                         {
                             studentIds.Add(p.Id);
                         }

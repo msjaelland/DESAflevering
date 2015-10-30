@@ -33,6 +33,16 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
+        public int GetStudentIdByEmail(string email)
+        {
+            return df.GetStudentIdByEmail(email);
+        }
+
+        public List<string> GetStudentByEmail(string email)
+        {
+            return df.GetStudentByEmail(email);
+        }
+
         public void SignUpForExam(int StudentID, int ExamID)
         {
             throw new NotImplementedException();
