@@ -76,5 +76,11 @@ namespace Service.Facade
         }
 
 
+        public void SignUpForCourse(int studentID, int courseID)
+        {
+            dbf.AssignStudentToCourse(studentID, courseID);
+        }
+
+
     }
 }

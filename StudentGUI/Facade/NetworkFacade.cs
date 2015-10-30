@@ -22,6 +22,12 @@ namespace StudentGUI.Facade
         public void Register(String name, String familyName, String email)
         {
             proxy.Register(name, familyName, email);
+            SignUpForCourse();
+        }
+
+        public void SignUpForCourse()
+        {
+            proxy.SignUpForCourse(3, 1);
         }
     }
 }

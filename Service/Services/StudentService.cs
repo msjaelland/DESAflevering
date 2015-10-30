@@ -18,7 +18,6 @@ namespace Service.Services
 
         public StudentService()
         {
-
             df = new DomainFacade(); 
         }
 
@@ -29,8 +28,7 @@ namespace Service.Services
 
         public void SignUpForCourse(int StudentID, int CourseID)
         {
-            
-            throw new NotImplementedException();
+            df.SignUpForCourse(StudentID, CourseID);
         }
 
         public void SignUpForExam(int StudentID, int ExamID)

@@ -19,12 +19,8 @@ namespace StudentGUI
 
         NetworkFacade nf; 
 
-        //ChannelFactory<IStudentService> channelFactory = new ChannelFactory<IStudentService>("StudentServiceEndpoint");
-        //IStudentService proxy;
-
         public StudentGUI()
         {
-            //proxy = channelFactory.CreateChannel();
             InitializeComponent();
             nf = new NetworkFacade(); 
         }

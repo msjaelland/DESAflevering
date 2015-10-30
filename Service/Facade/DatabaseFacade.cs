@@ -90,18 +90,35 @@ namespace Service.Facade
 
         #region Student stuff
 
+        public void AssignStudentToCourse(int studentID, int courseID)
+        {
+            Student student = (Student)db.PersonSet.Where(p => p.Id == studentID);
+            Course course = (Course) db.CourseSet.Where(c => c.Id == courseID);
+
+            student.Course.Add(course);
+            db.SaveChanges();
+            /*
+            var persons = from p in db.PersonSet select p;
+            Student stu; 
+            foreach (Person p in persons)
+            {
+                if (p.Email == studentEmail && p is Student)
+                {
+                    stu = (Student)p;
+                    break;
+                }
+            }  
+            */
+
+
+        }
+
         public void CreateStudent(Student student)
         {
             db.PersonSet.Add(student);
             db.SaveChanges();
         }
-
-        public void AddStudentExam(Exam exam)
-        {
-            db.ExamSet.Add(exam);
-            db.SaveChanges();
-        }
-
+        
         public List<string> GetStudentInfo(int id)
         {
             List<string> studentInfo = new List<string>();
