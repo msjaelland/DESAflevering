@@ -83,7 +83,7 @@ namespace Service.Services
 
         public List<int> GetListOfCourseID()
         {
-            throw new NotImplementedException();
+            return GetListOfCourseID();
         }
     }
 }

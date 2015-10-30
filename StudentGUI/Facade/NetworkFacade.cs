@@ -89,5 +89,10 @@ namespace StudentGUI.Facade
         
         }
 
+        public List<int> GetListOfCourseId()
+        {
+            return GetListOfCourseId();
+        }
+
     }
 }

@@ -17,12 +17,9 @@ namespace StudentGUI
     public partial class StudentGUI : Form
     {
 
-<<<<<<< HEAD
-=======
         NetworkFacade nf;
         int currentStudentId;
 
->>>>>>> 220aba9f00c268e5a4a8f72d108156dac4a78686
         public StudentGUI()
         {
             InitializeComponent();
@@ -47,12 +44,48 @@ namespace StudentGUI
 
         }
 
+        private void LoadCourses()
+        {
+            //List<string> fetchedCourseId = (List<string>)lstCourses.SelectedItem;
+            //lstViewStudents.Items.Clear();
+
+            //foreach (int i in nf.GetStudentIdsForCourse(Int32.Parse(fetchedCourseId[0])))
+            //{
+            //    List<string> studentInfo = nf.GetStudentInfo(i);
+            //    lstViewStudents.Items.Add(studentInfo);
+            //    Console.WriteLine(studentInfo);
+
+            //lstCourses.Items.Clear();
+            //foreach (int i in nf.GetListOfCourseId())
+            //{
+            //    List<string> courseInfo = nf.GetCourseInfo(i);
+            //    lstCourses.Items.Add(courseInfo);
+            //}
+
+            
+        }
+
         private void signIn_Click(object sender, EventArgs e)
         {
             currentStudentId = nf.GetStudentIdByEmail(EmailTextBox.Text);
         }
 
         private void signUp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AvailableCoursesTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer3_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

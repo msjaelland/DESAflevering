@@ -11,7 +11,7 @@
             <Grid Background="#FFE5E5E5">
                 <Label x:Name="label" Content="Register course" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Width="300"/>
                 <Label x:Name="label1" Content="All courses" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="478"/>
-                <ListView x:Name="lstCourses" HorizontalAlignment="Stretch" Height="Auto" Margin="305,26,0,0" VerticalAlignment="Stretch" Width="Auto">
+                <ListView x:Name="lstCourses" HorizontalAlignment="Stretch" Height="Auto" Margin="305,32,-0.429,-6.143" VerticalAlignment="Stretch" Width="Auto">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ID" Width="30" DisplayMemberBinding="{Binding [0]}"/>
