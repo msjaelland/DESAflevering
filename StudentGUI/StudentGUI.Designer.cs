@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SignIn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.Register = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,6 +70,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.CourseScheduleTextField = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.signUp = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -108,30 +114,84 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(597, 267);
+            this.tabControl1.Size = new System.Drawing.Size(1194, 513);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.AccessibleDescription = "Register";
             this.tabPage1.AccessibleName = "Register";
+            this.tabPage1.Controls.Add(this.SignIn);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.EmailTextBox);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.Register);
             this.tabPage1.Controls.Add(this.splitContainer1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(589, 241);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage1.Size = new System.Drawing.Size(1178, 466);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Register";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // SignIn
+            // 
+            this.SignIn.Location = new System.Drawing.Point(815, 254);
+            this.SignIn.Name = "SignIn";
+            this.SignIn.Size = new System.Drawing.Size(165, 44);
+            this.SignIn.TabIndex = 12;
+            this.SignIn.Text = "Sign in";
+            this.SignIn.UseVisualStyleBackColor = true;
+            this.SignIn.Click += new System.EventHandler(this.signIn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(593, 264);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 25);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "or";
+            this.label8.Click += new System.EventHandler(this.signIn_Click);
+            // 
+            // EmailTextBox
+            // 
+            this.EmailTextBox.Location = new System.Drawing.Point(786, 83);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(315, 31);
+            this.EmailTextBox.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(709, 86);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 25);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Email:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(859, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 25);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Sign in";
+            // 
             // Register
             // 
-            this.Register.Location = new System.Drawing.Point(93, 132);
+            this.Register.Location = new System.Drawing.Point(186, 254);
+            this.Register.Margin = new System.Windows.Forms.Padding(6);
             this.Register.Name = "Register";
-            this.Register.Size = new System.Drawing.Size(75, 23);
+            this.Register.Size = new System.Drawing.Size(150, 44);
             this.Register.TabIndex = 6;
             this.Register.Text = "Register";
             this.Register.UseVisualStyleBackColor = true;
@@ -139,7 +199,8 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(8, 6);
+            this.splitContainer1.Location = new System.Drawing.Point(16, 12);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -153,86 +214,96 @@
             this.splitContainer1.Panel2.Controls.Add(this.RegisterEmail);
             this.splitContainer1.Panel2.Controls.Add(this.RegisterFirstName);
             this.splitContainer1.Panel2.Controls.Add(this.RegisterFamilyName);
-            this.splitContainer1.Size = new System.Drawing.Size(234, 102);
-            this.splitContainer1.SplitterDistance = 78;
+            this.splitContainer1.Size = new System.Drawing.Size(468, 196);
+            this.splitContainer1.SplitterDistance = 156;
+            this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 71);
+            this.label3.Location = new System.Drawing.Point(20, 137);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.Size = new System.Drawing.Size(65, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Email";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 45);
+            this.label2.Location = new System.Drawing.Point(20, 87);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.Size = new System.Drawing.Size(134, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Family name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 19);
+            this.label1.Location = new System.Drawing.Point(20, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(68, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Name";
             // 
             // RegisterEmail
             // 
-            this.RegisterEmail.Location = new System.Drawing.Point(3, 68);
+            this.RegisterEmail.Location = new System.Drawing.Point(6, 131);
+            this.RegisterEmail.Margin = new System.Windows.Forms.Padding(6);
             this.RegisterEmail.Name = "RegisterEmail";
-            this.RegisterEmail.Size = new System.Drawing.Size(100, 20);
+            this.RegisterEmail.Size = new System.Drawing.Size(196, 31);
             this.RegisterEmail.TabIndex = 1;
             // 
             // RegisterFirstName
             // 
-            this.RegisterFirstName.Location = new System.Drawing.Point(3, 12);
+            this.RegisterFirstName.Location = new System.Drawing.Point(6, 23);
+            this.RegisterFirstName.Margin = new System.Windows.Forms.Padding(6);
             this.RegisterFirstName.Name = "RegisterFirstName";
-            this.RegisterFirstName.Size = new System.Drawing.Size(100, 20);
+            this.RegisterFirstName.Size = new System.Drawing.Size(196, 31);
             this.RegisterFirstName.TabIndex = 0;
             // 
             // RegisterFamilyName
             // 
-            this.RegisterFamilyName.Location = new System.Drawing.Point(3, 42);
+            this.RegisterFamilyName.Location = new System.Drawing.Point(6, 81);
+            this.RegisterFamilyName.Margin = new System.Windows.Forms.Padding(6);
             this.RegisterFamilyName.Name = "RegisterFamilyName";
-            this.RegisterFamilyName.Size = new System.Drawing.Size(100, 20);
+            this.RegisterFamilyName.Size = new System.Drawing.Size(196, 31);
             this.RegisterFamilyName.TabIndex = 2;
-            this.RegisterFamilyName.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.signUp);
             this.tabPage3.Controls.Add(this.CourseUnregisterButton);
             this.tabPage3.Controls.Add(this.CourseSignUpButton);
             this.tabPage3.Controls.Add(this.splitContainer2);
             this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(8, 39);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(589, 241);
+            this.tabPage3.Size = new System.Drawing.Size(1178, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Courses";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // CourseUnregisterButton
             // 
-            this.CourseUnregisterButton.Location = new System.Drawing.Point(410, 206);
+            this.CourseUnregisterButton.Location = new System.Drawing.Point(820, 396);
+            this.CourseUnregisterButton.Margin = new System.Windows.Forms.Padding(6);
             this.CourseUnregisterButton.Name = "CourseUnregisterButton";
-            this.CourseUnregisterButton.Size = new System.Drawing.Size(75, 23);
+            this.CourseUnregisterButton.Size = new System.Drawing.Size(150, 44);
             this.CourseUnregisterButton.TabIndex = 3;
             this.CourseUnregisterButton.Text = "Unregister";
             this.CourseUnregisterButton.UseVisualStyleBackColor = true;
             // 
             // CourseSignUpButton
             // 
-            this.CourseSignUpButton.Location = new System.Drawing.Point(110, 206);
+            this.CourseSignUpButton.Location = new System.Drawing.Point(220, 396);
+            this.CourseSignUpButton.Margin = new System.Windows.Forms.Padding(6);
             this.CourseSignUpButton.Name = "CourseSignUpButton";
-            this.CourseSignUpButton.Size = new System.Drawing.Size(75, 23);
+            this.CourseSignUpButton.Size = new System.Drawing.Size(150, 44);
             this.CourseSignUpButton.TabIndex = 2;
             this.CourseSignUpButton.Text = "Sign up";
             this.CourseSignUpButton.UseVisualStyleBackColor = true;
@@ -241,6 +312,7 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -250,40 +322,45 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.label5);
-            this.splitContainer2.Size = new System.Drawing.Size(589, 46);
-            this.splitContainer2.SplitterDistance = 293;
+            this.splitContainer2.Size = new System.Drawing.Size(1178, 88);
+            this.splitContainer2.SplitterDistance = 586;
+            this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(95, 11);
+            this.label4.Location = new System.Drawing.Point(190, 21);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.Size = new System.Drawing.Size(182, 25);
             this.label4.TabIndex = 0;
             this.label4.Text = "Available courses";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(127, 11);
+            this.label5.Location = new System.Drawing.Point(254, 21);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.Size = new System.Drawing.Size(123, 25);
             this.label5.TabIndex = 0;
             this.label5.Text = "My courses";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.splitContainer3);
-            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Location = new System.Drawing.Point(0, 52);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(586, 162);
+            this.panel1.Size = new System.Drawing.Size(1172, 312);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -293,32 +370,36 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.MyCoursesTreeView);
-            this.splitContainer3.Size = new System.Drawing.Size(586, 162);
-            this.splitContainer3.SplitterDistance = 294;
+            this.splitContainer3.Size = new System.Drawing.Size(1172, 312);
+            this.splitContainer3.SplitterDistance = 588;
+            this.splitContainer3.SplitterWidth = 8;
             this.splitContainer3.TabIndex = 0;
             // 
             // AvailableCoursesTreeView
             // 
             this.AvailableCoursesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AvailableCoursesTreeView.Location = new System.Drawing.Point(0, 0);
+            this.AvailableCoursesTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.AvailableCoursesTreeView.Name = "AvailableCoursesTreeView";
-            this.AvailableCoursesTreeView.Size = new System.Drawing.Size(294, 162);
+            this.AvailableCoursesTreeView.Size = new System.Drawing.Size(588, 312);
             this.AvailableCoursesTreeView.TabIndex = 0;
             // 
             // MyCoursesTreeView
             // 
             this.MyCoursesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyCoursesTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MyCoursesTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.MyCoursesTreeView.Name = "MyCoursesTreeView";
-            this.MyCoursesTreeView.Size = new System.Drawing.Size(288, 162);
+            this.MyCoursesTreeView.Size = new System.Drawing.Size(576, 312);
             this.MyCoursesTreeView.TabIndex = 0;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.splitContainer4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(8, 39);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(589, 241);
+            this.tabPage4.Size = new System.Drawing.Size(1178, 466);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Exams";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -327,6 +408,7 @@
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer4.Name = "splitContainer4";
             // 
             // splitContainer4.Panel1
@@ -336,23 +418,26 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.ExamSignUpButton);
-            this.splitContainer4.Size = new System.Drawing.Size(589, 241);
-            this.splitContainer4.SplitterDistance = 287;
+            this.splitContainer4.Size = new System.Drawing.Size(1178, 466);
+            this.splitContainer4.SplitterDistance = 574;
+            this.splitContainer4.SplitterWidth = 8;
             this.splitContainer4.TabIndex = 0;
             // 
             // ExamTreeView
             // 
             this.ExamTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExamTreeView.Location = new System.Drawing.Point(0, 0);
+            this.ExamTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.ExamTreeView.Name = "ExamTreeView";
-            this.ExamTreeView.Size = new System.Drawing.Size(287, 241);
+            this.ExamTreeView.Size = new System.Drawing.Size(574, 466);
             this.ExamTreeView.TabIndex = 0;
             // 
             // ExamSignUpButton
             // 
-            this.ExamSignUpButton.Location = new System.Drawing.Point(107, 187);
+            this.ExamSignUpButton.Location = new System.Drawing.Point(214, 360);
+            this.ExamSignUpButton.Margin = new System.Windows.Forms.Padding(6);
             this.ExamSignUpButton.Name = "ExamSignUpButton";
-            this.ExamSignUpButton.Size = new System.Drawing.Size(75, 23);
+            this.ExamSignUpButton.Size = new System.Drawing.Size(150, 44);
             this.ExamSignUpButton.TabIndex = 0;
             this.ExamSignUpButton.Text = "Sign up";
             this.ExamSignUpButton.UseVisualStyleBackColor = true;
@@ -361,10 +446,11 @@
             // 
             this.tabPage2.Controls.Add(this.splitContainer6);
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(589, 241);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage2.Size = new System.Drawing.Size(1178, 466);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "Grades";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -372,7 +458,8 @@
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.Location = new System.Drawing.Point(3, 56);
+            this.splitContainer6.Location = new System.Drawing.Point(6, 108);
+            this.splitContainer6.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer6.Name = "splitContainer6";
             // 
             // splitContainer6.Panel1
@@ -382,41 +469,46 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.AllMyGradesTextField);
-            this.splitContainer6.Size = new System.Drawing.Size(583, 182);
-            this.splitContainer6.SplitterDistance = 263;
+            this.splitContainer6.Size = new System.Drawing.Size(1166, 352);
+            this.splitContainer6.SplitterDistance = 526;
+            this.splitContainer6.SplitterWidth = 8;
             this.splitContainer6.TabIndex = 1;
             // 
             // MyExamsTreeView
             // 
             this.MyExamsTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyExamsTreeView.Location = new System.Drawing.Point(0, 0);
+            this.MyExamsTreeView.Margin = new System.Windows.Forms.Padding(6);
             this.MyExamsTreeView.Name = "MyExamsTreeView";
-            this.MyExamsTreeView.Size = new System.Drawing.Size(263, 182);
+            this.MyExamsTreeView.Size = new System.Drawing.Size(526, 352);
             this.MyExamsTreeView.TabIndex = 0;
             // 
             // AllMyGradesTextField
             // 
             this.AllMyGradesTextField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AllMyGradesTextField.Location = new System.Drawing.Point(0, 0);
+            this.AllMyGradesTextField.Margin = new System.Windows.Forms.Padding(6);
             this.AllMyGradesTextField.Multiline = true;
             this.AllMyGradesTextField.Name = "AllMyGradesTextField";
             this.AllMyGradesTextField.ReadOnly = true;
-            this.AllMyGradesTextField.Size = new System.Drawing.Size(316, 182);
+            this.AllMyGradesTextField.Size = new System.Drawing.Size(632, 352);
             this.AllMyGradesTextField.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.splitContainer5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(6, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(583, 53);
+            this.panel2.Size = new System.Drawing.Size(1166, 102);
             this.panel2.TabIndex = 0;
             // 
             // splitContainer5
             // 
             this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer5.Name = "splitContainer5";
             // 
             // splitContainer5.Panel1
@@ -427,44 +519,49 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.AllGradesLabel);
-            this.splitContainer5.Size = new System.Drawing.Size(583, 53);
-            this.splitContainer5.SplitterDistance = 262;
+            this.splitContainer5.Size = new System.Drawing.Size(1166, 102);
+            this.splitContainer5.SplitterDistance = 524;
+            this.splitContainer5.SplitterWidth = 8;
             this.splitContainer5.TabIndex = 0;
             // 
             // GradeLabel
             // 
             this.GradeLabel.AutoSize = true;
-            this.GradeLabel.Location = new System.Drawing.Point(15, 21);
+            this.GradeLabel.Location = new System.Drawing.Point(30, 40);
+            this.GradeLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.GradeLabel.Name = "GradeLabel";
-            this.GradeLabel.Size = new System.Drawing.Size(42, 13);
+            this.GradeLabel.Size = new System.Drawing.Size(83, 25);
             this.GradeLabel.TabIndex = 1;
             this.GradeLabel.Text = "Grade: ";
             // 
             // ExamLabel
             // 
             this.ExamLabel.AutoSize = true;
-            this.ExamLabel.Location = new System.Drawing.Point(109, 21);
+            this.ExamLabel.Location = new System.Drawing.Point(218, 40);
+            this.ExamLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.ExamLabel.Name = "ExamLabel";
-            this.ExamLabel.Size = new System.Drawing.Size(36, 13);
+            this.ExamLabel.Size = new System.Drawing.Size(72, 25);
             this.ExamLabel.TabIndex = 0;
             this.ExamLabel.Text = "Exam:";
             // 
             // AllGradesLabel
             // 
             this.AllGradesLabel.AutoSize = true;
-            this.AllGradesLabel.Location = new System.Drawing.Point(148, 21);
+            this.AllGradesLabel.Location = new System.Drawing.Point(296, 40);
+            this.AllGradesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.AllGradesLabel.Name = "AllGradesLabel";
-            this.AllGradesLabel.Size = new System.Drawing.Size(69, 13);
+            this.AllGradesLabel.Size = new System.Drawing.Size(142, 25);
             this.AllGradesLabel.TabIndex = 0;
             this.AllGradesLabel.Text = "All my grades";
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.CourseScheduleTextField);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(8, 39);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(589, 241);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage5.Size = new System.Drawing.Size(1178, 466);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Course Schedule";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -472,28 +569,42 @@
             // CourseScheduleTextField
             // 
             this.CourseScheduleTextField.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CourseScheduleTextField.Location = new System.Drawing.Point(3, 3);
+            this.CourseScheduleTextField.Location = new System.Drawing.Point(6, 6);
+            this.CourseScheduleTextField.Margin = new System.Windows.Forms.Padding(6);
             this.CourseScheduleTextField.Multiline = true;
             this.CourseScheduleTextField.Name = "CourseScheduleTextField";
             this.CourseScheduleTextField.ReadOnly = true;
-            this.CourseScheduleTextField.Size = new System.Drawing.Size(583, 235);
+            this.CourseScheduleTextField.Size = new System.Drawing.Size(1166, 454);
             this.CourseScheduleTextField.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(86, 4);
+            // 
+            // signUp
+            // 
+            this.signUp.Location = new System.Drawing.Point(220, 343);
+            this.signUp.Name = "signUp";
+            this.signUp.Size = new System.Drawing.Size(150, 44);
+            this.signUp.TabIndex = 4;
+            this.signUp.Text = "Sign Up";
+            this.signUp.UseVisualStyleBackColor = true;
+            this.signUp.Click += new System.EventHandler(this.signUp_Click);
             // 
             // StudentGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 267);
+            this.ClientSize = new System.Drawing.Size(1194, 513);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "StudentGUI";
             this.Text = "Student System";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -574,6 +685,12 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox CourseScheduleTextField;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button SignIn;
+        private System.Windows.Forms.Button signUp;
     }
 }
 
