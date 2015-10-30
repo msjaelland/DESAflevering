@@ -22,13 +22,8 @@ namespace StudentGUI.Facade
         public void Register(String name, String familyName, String email)
         {
             proxy.Register(name, familyName, email);
-            SignUpForCourse();
         }
-
-        public void SignUpForCourse()
-        {
-            proxy.SignUpForCourse(3, 1);
-        }
+        
 
         public int GetStudentIdByEmail(string email)
         {
@@ -42,33 +37,32 @@ namespace StudentGUI.Facade
 
         public void SignUpForCourse(int StudentID, int CourseID)
         {
-
-            throw new NotImplementedException();
+            proxy.SignUpForCourse(StudentID, CourseID);
         }
 
         public void SignUpForExam(int StudentID, int ExamID)
         {
-            throw new NotImplementedException();
+            proxy.SignUpForExam(StudentID, ExamID);
         }
 
         public void UnregisterFromCourse(int StudentID, int CourseID)
         {
-            throw new NotImplementedException();
+            proxy.UnregisterFromCourse(StudentID, CourseID);
         }
 
-        public Dictionary<int, int> ViewAllMyGrades(int StudentID)
+        public Dictionary<String, int> ViewAllMyGrades(int StudentID)
         {
-            throw new NotImplementedException();
+            return proxy.GetAllExamGrades(StudentID);
         }
 
-        public void ViewCourseSchedule()
+        public List<String> GetCourseSchedule(int StudentID)
         {
-            throw new NotImplementedException();
+            return proxy.GetCourseSchedule(StudentID);
         }
 
-        public int ViewMyGrade(int ExamID)
+        public int ViewMyGrade(int StudentID, int ExamID)
         {
-            throw new NotImplementedException();
+            return proxy.GetExamGrade(StudentID, ExamID);
         }
 
         public Dictionary<string, int> getAvailableExams()

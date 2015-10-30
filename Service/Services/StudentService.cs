@@ -28,12 +28,17 @@ namespace Service.Services
 
         public void SignUpForCourse(int StudentID, int CourseID)
         {
-            df.SignUpForCourse(StudentID, CourseID);
+            df.ASsignStudentToCourse(StudentID, CourseID);
         }
 
         public int GetStudentIdByEmail(string email)
         {
             return df.GetStudentIdByEmail(email);
+        }
+
+        public List<int> GetListOfCourseID()
+        {
+            throw new NotImplementedException();
         }
 
         public List<string> GetStudentByEmail(string email)
@@ -43,27 +48,27 @@ namespace Service.Services
 
         public void SignUpForExam(int StudentID, int ExamID)
         {
-            throw new NotImplementedException();
+            df.AssignStudenToExam(StudentID, ExamID);
         }
 
         public void UnregisterFromCourse(int StudentID, int CourseID)
         {
-            throw new NotImplementedException();
+            df.UnregisterStudentFromCourse(StudentID, CourseID);
         }
 
-        public Dictionary<int, int> ViewAllMyGrades(int StudentID)
+        public Dictionary<String, int> ViewAllMyGrades(int StudentID)
         {
-            throw new NotImplementedException();
+            return df.GetAllExamGrades(StudentID);
         }
 
-        public void ViewCourseSchedule()
+        public List<String> GetCourseSchedule(int StudentID)
         {
-            throw new NotImplementedException();
+            return df.GetStudentCourseSchedule(StudentID);
         }
 
-        public int ViewMyGrade(int ExamID)
+        public int ViewMyGrade(int StudentID, int examID)
         {
-            throw new NotImplementedException();
+            return df.GetExamGrade(StudentID, examID);
         }
 
         public Dictionary<string, int> getAvailableExams()
@@ -80,5 +85,7 @@ namespace Service.Services
              }
             return availbableExams;
         }
+
+        
     }
 }

@@ -86,11 +86,38 @@ namespace Service.Facade
         }
 
 
-        public void SignUpForCourse(int studentID, int courseID)
+        public void ASsignStudentToCourse(int studentID, int courseID)
         {
             dbf.AssignStudentToCourse(studentID, courseID);
         }
 
+        public Dictionary<String, int> GetAllExamGrades(int studentID)
+        {
+            throw new NotImplementedException();
+            //dbf.GetAllExamGrades(studentID);
+        }
+
+        public int GetExamGrade(int studentID, int examID)
+        {
+            throw new NotImplementedException();
+            //dbf.GetExamGrade(studentID, examID);
+        }
+
+        public List<String> GetStudentCourseSchedule(int studentID)
+        {
+            throw new NotImplementedException();
+            //dbf.GetStudentCourseSchedule(studentID);
+        }
+
+        public void AssignStudenToExam(int studentID, int examID)
+        {
+            dbf.AssignStudentToCourse(studentID, examID);
+        }
+
+        public void UnregisterStudentFromCourse(int studentID, int CourseID)
+        {
+            dbf.UnregisterStudentFromCourse(studentID, CourseID);
+        }
 
     }
 }

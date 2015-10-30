@@ -30,16 +30,16 @@ namespace Service.Services
         void UnregisterFromCourse(int StudentID, int CourseID);
 
         [OperationContract]
-        void ViewCourseSchedule();
+        List<String> GetCourseSchedule(int StudentID);
 
         [OperationContract]
         void SignUpForExam(int StudentID, int ExamID);
 
         [OperationContract]
-        int ViewMyGrade(int ExamID);
+        int ViewMyGrade(int StudentID, int ExamID);
 
         [OperationContract]
-        Dictionary<int, int> ViewAllMyGrades(int StudentID);
+        Dictionary<String, int> ViewAllMyGrades(int StudentID);
 
 	    [OperationContract]
 	    Dictionary<string, int> getAvailableExams();
