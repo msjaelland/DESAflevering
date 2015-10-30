@@ -80,5 +80,10 @@ namespace Service.Services
              }
             return availbableExams;
         }
+
+        public List<int> GetListOfCourseID()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
