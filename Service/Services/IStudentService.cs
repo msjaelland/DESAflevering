@@ -36,10 +36,10 @@ namespace Service.Services
         void SignUpForExam(int StudentID, int ExamID);
 
         [OperationContract]
-        int ViewMyGrade(int StudentID, int ExamID);
+        int GetExamGrade(int StudentID, int ExamID);
 
         [OperationContract]
-        Dictionary<String, int> ViewAllMyGrades(int StudentID);
+        Dictionary<String, int> GetAllExamGrades(int StudentID);
 
 	    [OperationContract]
 	    Dictionary<string, int> getAvailableExams();
