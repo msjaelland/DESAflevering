@@ -94,7 +94,7 @@ namespace Service.Facade
         {
             Student student = (Student)db.PersonSet.Where(p => p.Id == studentID);
             Course course = (Course) db.CourseSet.Where(c => c.Id == courseID);
-
+            //s
             student.Course.Add(course);
             db.SaveChanges();
             /*
