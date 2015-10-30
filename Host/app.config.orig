@@ -14,7 +14,11 @@
     </providers>
   </entityFramework>
   <connectionStrings>
+<<<<<<< HEAD
+    <add name="DataModelContainer" connectionString="metadata=res://*/DataModel.csdl|res://*/DataModel.ssdl|res://*/DataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-L6IAMSU;initial catalog=DesRunningSample;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+=======
     <add name="DataModelContainer" connectionString="metadata=res://*/DataModel.csdl|res://*/DataModel.ssdl|res://*/DataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-4EQSK97\SQLEXPRESS;initial catalog=DesRunningSample;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+>>>>>>> 799295f507cd579d9a6a832ce6b15c8c678e8577
   </connectionStrings>
   <system.serviceModel>
     <services>

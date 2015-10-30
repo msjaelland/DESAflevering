@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Types;
@@ -90,28 +92,71 @@ namespace Service.Facade
 
         #region Student stuff
 
+        public Dictionary<String,int> GetAllExamGrades(int studentID)
+        {
+            throw new NotImplementedException();
+        } 
+
+        public int GetExamGrade(int studentID, int examID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<String> GetStudentCourseSchedule(int studentID)
+        {
+            throw new NotImplementedException();
+        } 
+
+        public void AssignStudenToExam(int studentID, int examID)
+        {
+            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Exam exam = db.ExamSet.FirstOrDefault(c => c.Id == examID);
+
+            if (student != null && exam != null)
+            {
+                student.Exam.Add(exam);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new System.InvalidOperationException();
+                Console.WriteLine("Student or exam is null!");
+            }
+        }
+
+        public void UnregisterStudentFromCourse(int studentID, int CourseID)
+        {
+            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Course course = db.CourseSet.FirstOrDefault(c => c.Id == CourseID);
+
+            if (student != null && course != null)
+            {
+                student.Course.Remove(course);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new System.InvalidOperationException();
+                Console.WriteLine("Student or course is null!");
+            }
+        }
+
         public void AssignStudentToCourse(int studentID, int courseID)
         {
-            Student student = (Student)db.PersonSet.Where(p => p.Id == studentID);
-            Course course = (Course) db.CourseSet.Where(c => c.Id == courseID);
-            //s
-            student.Course.Add(course);
-            db.SaveChanges();
-            /*
-            var persons = from p in db.PersonSet select p;
-            Student stu; 
-            foreach (Person p in persons)
+            Student student = (Student) db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseID);
+
+            if (student != null && course != null)
             {
-                if (p.Email == studentEmail && p is Student)
-                {
-                    stu = (Student)p;
-                    break;
-                }
-            }  
-            */
-
-
-        }
+                student.Course.Add(course);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new System.InvalidOperationException();
+                Console.WriteLine("Student or course is null!");
+            }
+         }
 
         public void CreateStudent(Student student)
         {
@@ -168,9 +213,9 @@ namespace Service.Facade
                 if (p.Email == email && p is Student)
                 {
                     studentInfo.Add(p.Id.ToString());
-                    //studentInfo.Add(p.Name);
-                    //studentInfo.Add(p.FamilyName);
-                    //studentInfo.Add(p.Email);
+                    studentInfo.Add(p.Name);
+                    studentInfo.Add(p.FamilyName);
+                    studentInfo.Add(p.Email);
                 }
             }
             return studentInfo;

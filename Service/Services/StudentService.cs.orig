@@ -86,6 +86,13 @@ namespace Service.Services
             return availbableExams;
         }
 
+<<<<<<< HEAD
+        public List<int> GetListOfCourseID()
+        {
+            return GetListOfCourseID();
+        }
+=======
         
+>>>>>>> 799295f507cd579d9a6a832ce6b15c8c678e8577
     }
 }
