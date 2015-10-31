@@ -74,6 +74,11 @@ namespace Service.Facade
             return dbf.GetStudentByEmail(email);
         }
 
+        public string GetStudentName(int id)
+        {
+            return dbf.GetStudentName(id);
+        }
+
         public List<string> GetStudentInfo(int id)
         {
             return dbf.GetStudentInfo(id);
@@ -86,7 +91,7 @@ namespace Service.Facade
         }
 
 
-        public void ASsignStudentToCourse(int studentID, int courseID)
+        public void AssignStudentToCourse(int studentID, int courseID)
         {
             dbf.AssignStudentToCourse(studentID, courseID);
         }

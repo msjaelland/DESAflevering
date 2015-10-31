@@ -15,14 +15,20 @@ namespace Service.Services
 	    void Register(String name, String familyName, String email);
 
         [OperationContract]
+        List<string> GetCourseInfo(int id);
+
+        [OperationContract]
         void SignUpForCourse(int StudentID, int CourseID);
 
         [OperationContract]
         int GetStudentIdByEmail(string email);
 
         [OperationContract]
-        List<int> GetListOfCourseID();
+        List<int> GetListOfCourseId();
 
+        [OperationContract]
+        string GetStudentName(int id);
+        
         [OperationContract]
         List<string> GetStudentByEmail(string email);
         

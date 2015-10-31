@@ -61,6 +61,32 @@ namespace Service.Facade
             return teacherInfo;
         }
 
+        /* 
+        MULIG METODE TIL AT HENTE COURSEID FOR EN STUDENT TIL GUI?
+        KAN IKKE LIGE FINDE UD AF HVORDAN JEG SKAL HENTE STUDENTID...
+        */
+
+        //public Dictionary<int, int> GetListOfCourseIDForStudent(int studentID)
+        //{
+        //    Dictionary<int, int> studentAndCourseID = new Dictionary<int, int>();
+
+        //    Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+        //    Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseID);
+
+        //    var studentCourses = from c in student.Course select c;
+        //    foreach (Course c in studentCourses)
+        //    {
+
+        //        if (studentID == c.Student. && courseID == c.Id)
+        //        {
+
+        //        }
+
+        //        return studentAndCourseID;
+        //    }
+
+        //}
+
         public string GetTeacherName(int id)
         {
             var persons = from p in db.PersonSet select p;
@@ -136,8 +162,7 @@ namespace Service.Facade
             }
             else
             {
-                throw new System.InvalidOperationException();
-                Console.WriteLine("Student or course is null!");
+                throw new System.InvalidOperationException("Student or course is null!");
             }
         }
 
@@ -153,8 +178,8 @@ namespace Service.Facade
             }
             else
             {
-                throw new System.InvalidOperationException();
-                Console.WriteLine("Student or course is null!");
+                throw new System.InvalidOperationException("Student or course is null!");
+                
             }
          }
 
@@ -162,6 +187,7 @@ namespace Service.Facade
         {
             db.PersonSet.Add(student);
             db.SaveChanges();
+           
         }
         
         public List<string> GetStudentInfo(int id)
@@ -182,21 +208,34 @@ namespace Service.Facade
             return studentInfo;
         }
 
-        public int GetStudentIdByEmail(string email)
+        public string GetStudentName(int id)
         {
-            int studentId;
+            string studentName;
             var persons = from p in db.PersonSet select p;
 
+            foreach (Person p in persons)
+            {
+                if (p.Id == id && p is Student)
+                {
+                    return studentName = p.Name + " " + p.FamilyName;
+                }
+                
+            }
+            return "Uknown User";
+        }
+
+        public int GetStudentIdByEmail(string email)
+        {
+            db.SaveChanges();
+            int studentId;
+            var persons = from p in db.PersonSet select p;
+            Console.WriteLine(email);
             foreach (Person p in persons)
             {
                 if (p.Email == email && p is Student)
                 {
                     studentId = p.Id;
                     return studentId;
-                }
-                else
-                {
-                    throw new System.InvalidOperationException("There are no users with that e-mail");
                 }
             }
 

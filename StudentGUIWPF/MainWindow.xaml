@@ -13,7 +13,7 @@
     <Grid>
         <TabControl x:Name="tabControl" Margin="0">
             <TabItem x:Name="RegisterTab" Header="Register">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Margin="0,-5,-0.429,5.857">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="100*"/>
@@ -34,40 +34,12 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="CoursesTab" Header="Courses">
-                <Grid Background="#FFE5E5E5" DataContext="{StaticResource courseSetViewSource}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="128*"/>
-                        <ColumnDefinition Width="761*"/>
-                    </Grid.ColumnDefinitions>
-                    <ListView x:Name="listView" HorizontalAlignment="Left" Height="365" Margin="0,35,0,0" VerticalAlignment="Top" Width="444" Grid.ColumnSpan="2" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionMode="Single">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Id"/>
-                                <GridViewColumn Header="Name"/>
-                                <GridViewColumn Header="Instance"/>
-                                <GridViewColumn Header="InstanceYear"/>
-                                <GridViewColumn Header="Desciption"/>
-                                <GridViewColumn Header="ECTS"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                <Grid Background="#FFE5E5E5">
                     <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Label x:Name="label2" Content="Avaliable Courses" HorizontalAlignment="Left" Margin="30.357,4,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.546,-0.28" Grid.Column="1"/>
                     <Label x:Name="label2_Copy" Content="My Courses" HorizontalAlignment="Left" Margin="494.357,4,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.546,-0.28" Grid.Column="1"/>
                     <Button x:Name="SignUpCourseButton" Content="Sign Up" HorizontalAlignment="Left" Margin="58.357,408,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Grid.Column="1"/>
                     <Button x:Name="UnregisterCourseButton" Content="Unregister" HorizontalAlignment="Left" Margin="494.357,408,0,0" VerticalAlignment="Top" Width="93" FontSize="16" Click="UnregisterCourseButton_Click" Grid.Column="1"/>
-                    <DataGrid x:Name="courseSetDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="321,40,9.571,42.857" RowDetailsVisibilityMode="VisibleWhenSelected">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="instanceColumn" Binding="{Binding Instance}" Header="Instance" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="instanceYearColumn" Binding="{Binding InstanceYear}" Header="Instance Year" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="descriptionColumn" Binding="{Binding Description}" Header="Description" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="eCTSColumn" Binding="{Binding ECTS}" Header="ECTS" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="teacherIdColumn" Binding="{Binding TeacherId}" Header="Teacher Id" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="teacher_IdColumn" Binding="{Binding Teacher_Id}" Header="Teacher Id" Width="SizeToHeader"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="ExamsTab" Header="Exams">

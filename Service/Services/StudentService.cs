@@ -26,9 +26,14 @@ namespace Service.Services
             df.CreateStudent(name, familyName, email);
         }
 
+        public List<string> GetCourseInfo(int id)
+        {
+            return df.GetCourseInfo(id);
+        }
+
         public void SignUpForCourse(int StudentID, int CourseID)
         {
-            df.ASsignStudentToCourse(StudentID, CourseID);
+            df.AssignStudentToCourse(StudentID, CourseID);
         }
 
         public int GetStudentIdByEmail(string email)
@@ -36,9 +41,14 @@ namespace Service.Services
             return df.GetStudentIdByEmail(email);
         }
 
-        public List<int> GetListOfCourseID()
+        public string GetStudentName(int id)
         {
-            throw new NotImplementedException();
+            return df.GetStudentName(id);
+        }
+
+        public List<int> GetListOfCourseId()
+        {
+            return df.GetListOfCourseId();
         }
 
         public List<string> GetStudentByEmail(string email)
