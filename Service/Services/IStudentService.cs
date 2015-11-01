@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Types; 
 
 namespace Service.Services
 {
@@ -42,10 +43,10 @@ namespace Service.Services
         void SignUpForExam(int StudentID, int ExamID);
 
         [OperationContract]
-        int GetExamGrade(int StudentID, int ExamID);
+        Grade GetExamGrade(int StudentID, int ExamID);
 
         [OperationContract]
-        Dictionary<String, int> GetAllExamGrades(int StudentID);
+        Dictionary<int, Grade> GetAllExamGrades(int StudentID);
 
 	    [OperationContract]
 	    Dictionary<string, int> getAvailableExams();

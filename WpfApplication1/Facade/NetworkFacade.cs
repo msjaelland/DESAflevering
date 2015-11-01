@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Types;
 
 namespace WpfApplication1.Facade
 {
@@ -60,17 +61,17 @@ namespace WpfApplication1.Facade
             proxy.UnregisterFromCourse(StudentID, CourseID);
         }
 
-        public Dictionary<String, int> ViewAllMyGrades(int StudentID)
+        public Dictionary<int, Grade> GetAllExamGrades(int StudentID)
         {
             return proxy.GetAllExamGrades(StudentID);
         }
-
+        
         public List<String> GetCourseSchedule(int StudentID)
         {
             return proxy.GetCourseSchedule(StudentID);
         }
 
-        public int ViewMyGrade(int StudentID, int ExamID)
+        public Grade GetExamGrade(int StudentID, int ExamID)
         {
             return proxy.GetExamGrade(StudentID, ExamID);
         }

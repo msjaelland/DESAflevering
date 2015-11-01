@@ -96,22 +96,19 @@ namespace Service.Facade
             dbf.AssignStudentToCourse(studentID, courseID);
         }
 
-        public Dictionary<String, int> GetAllExamGrades(int studentID)
+        public Dictionary<int, Grade> GetAllExamGrades(int studentID)
         {
-            throw new NotImplementedException();
-            //dbf.GetAllExamGrades(studentID);
+            return dbf.GetAllExamGrades(studentID);
         }
 
-        public int GetExamGrade(int studentID, int examID)
+        public Grade GetExamGrade(int studentID, int examID)
         {
-            throw new NotImplementedException();
-            //dbf.GetExamGrade(studentID, examID);
+          return dbf.GetExamGrade(studentID, examID);
         }
 
         public List<String> GetStudentCourseSchedule(int studentID)
         {
-            throw new NotImplementedException();
-            //dbf.GetStudentCourseSchedule(studentID);
+            return dbf.GetStudentCourseSchedule(studentID);
         }
 
         public void AssignStudenToExam(int studentID, int examID)

@@ -41,13 +41,14 @@ namespace WpfApplication1
             nf.Register(NameTextBox.Text, FamilyNameTextBox.Text, EmailTextBox.Text);
             currentStudentId = nf.GetStudentIdByEmail(EmailTextBox.Text);
             CurrentUserLabel.Content = nf.GetStudentName(currentStudentId);
-
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            currentStudentId = nf.GetStudentIdByEmail(EmailSignInTextBox.Text);
-            CurrentUserLabel.Content = nf.GetStudentName(currentStudentId);
+            nf.GetCourseSchedule(1);
+            //nf.GetCourseIDsForStudent(1).ForEach(Console.WriteLine);
+            //currentStudentId = nf.GetStudentIdByEmail(EmailSignInTextBox.Text);
+            //CurrentUserLabel.Content = nf.GetStudentName(currentStudentId);
         }
 
 

@@ -66,7 +66,7 @@ namespace Service.Services
             df.UnregisterStudentFromCourse(StudentID, CourseID);
         }
 
-        public Dictionary<String, int> GetAllExamGrades(int StudentID)
+        public Dictionary<int, Grade> GetAllExamGrades(int StudentID)
         {
             return df.GetAllExamGrades(StudentID);
         }
@@ -76,7 +76,7 @@ namespace Service.Services
             return df.GetStudentCourseSchedule(StudentID);
         }
 
-        public int GetExamGrade(int StudentID, int examID)
+        public Grade GetExamGrade(int StudentID, int examID)
         {
             return df.GetExamGrade(StudentID, examID);
         }
@@ -100,5 +100,6 @@ namespace Service.Services
         {
             return df.GetCourseIDsForStudent(StudentID); 
         }
+        
     }
 }

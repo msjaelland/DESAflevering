@@ -25,7 +25,7 @@ namespace Service.Facade
             db.PersonSet.Add(teacher);
             db.SaveChanges();
         }
-
+        //Returns list of all teacher IDs
         public List<int> GetListOfTeacherId()
         {
             List<int> teacherIdList = new List<int>();
@@ -61,32 +61,7 @@ namespace Service.Facade
             return teacherInfo;
         }
 
-        /* 
-        MULIG METODE TIL AT HENTE COURSEID FOR EN STUDENT TIL GUI?
-        KAN IKKE LIGE FINDE UD AF HVORDAN JEG SKAL HENTE STUDENTID...
-        */
-
-        //public Dictionary<int, int> GetListOfCourseIDForStudent(int studentID)
-        //{
-        //    Dictionary<int, int> studentAndCourseID = new Dictionary<int, int>();
-
-        //    Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
-        //    Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseID);
-
-        //    var studentCourses = from c in student.Course select c;
-        //    foreach (Course c in studentCourses)
-        //    {
-
-        //        if (studentID == c.Student. && courseID == c.Id)
-        //        {
-
-        //        }
-
-        //        return studentAndCourseID;
-        //    }
-
-        //}
-
+        //Returns all courses (by ID) for given student
         public List<int> GetCourseIDsForStudent(int StudentID)
         {
             List<int> courseIDs = new List<int>();
@@ -99,11 +74,10 @@ namespace Service.Facade
                 courseIDs.Add(c.Id);
             }
             Console.WriteLine("Returning courseIDs");
-            //Console.WriteLine("Length is: " + courseIDs.Count.ToString());
-            //courseIDs.ForEach(Console.WriteLine);
             return courseIDs;
         }
 
+        //Returns name of a teacher by id
         public string GetTeacherName(int id)
         {
             var persons = from p in db.PersonSet select p;
@@ -134,25 +108,62 @@ namespace Service.Facade
         #endregion
 
         #region Student stuff
-
-        public Dictionary<String,int> GetAllExamGrades(int studentID)
+        //Returns Dictionary<examID(int), grade(Grade)
+        public Dictionary<int, Grade> GetAllExamGrades(int StudentID)
         {
-            throw new NotImplementedException();
-        } 
+            Dictionary<int, Grade> examGrades = new Dictionary<int, Grade>();
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == StudentID) as Student;
 
-        public int GetExamGrade(int studentID, int examID)
-        {
-            throw new NotImplementedException();
+            var exams = from e in student.Exam select e;
+            foreach (Exam e in exams)
+            {
+                examGrades.Add(e.Id, e.Grade);
+            }
+
+            return examGrades;
         }
+        //TODO: Don't return fail if no exam is found!
+        public Grade GetExamGrade(int studentID, int examID)
+        {
+            Grade grade = Grade.Fail; 
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == studentID) as Student;
 
+            var exams = from e in student.Exam select e;
+            foreach (Exam e in exams)
+            {
+                if (e.Id == examID)
+                {
+                    grade = e.Grade;
+                }
+            }
+            return grade;
+
+        }
+        //Not testet since calenderentries have not been implemented
+        //TODO: Make this method better/more effecient!
         public List<String> GetStudentCourseSchedule(int studentID)
         {
-            throw new NotImplementedException();
-        } 
+            List<String> courseSchedule = new List<String>();
+            List<int> studentCourses = GetCourseIDsForStudent(studentID);
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == studentID) as Student;
+            
+            var calenderEntries = from c in db.CalendarEntrySet select c;
 
-        public void AssignStudenToExam(int studentID, int examID)
+            foreach (CalendarEntry c in calenderEntries)
+            {
+                foreach (int i in studentCourses)
+                {
+                    if (c.CourseId == i){
+                        courseSchedule.Add("Day: "+c.Day.ToString()+" StartHour: "+c.StartHour+" EndHour: "+c.EndHour+c.Day);
+                    }
+                }
+            }
+            return courseSchedule; ; 
+        }
+        //Assigns a student to an exam by adding a realtion to table StudentExam
+        public void AssignStudentToExam(int studentID, int examID)
         {
-            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == studentID) as Student;
             Exam exam = db.ExamSet.FirstOrDefault(c => c.Id == examID);
 
             if (student != null && exam != null)
@@ -166,10 +177,10 @@ namespace Service.Facade
                 Console.WriteLine("Student or exam is null!");
             }
         }
-
+        //Unregisters a student from a course by removing the relation from table StudentCourse
         public void UnregisterStudentFromCourse(int studentID, int CourseID)
         {
-            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == studentID) as Student;
             Course course = db.CourseSet.FirstOrDefault(c => c.Id == CourseID);
 
             if (student != null && course != null)
@@ -182,10 +193,10 @@ namespace Service.Facade
                 throw new System.InvalidOperationException("Student or course is null!");
             }
         }
-
+        //Assigns a student to a course by adding a relation to tabe StudentCourse
         public void AssignStudentToCourse(int studentID, int courseID)
         {
-            Student student = (Student) db.PersonSet.FirstOrDefault(s => s.Id == studentID && s is Student);
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == studentID) as Student;
             Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseID);
 
             if (student != null && course != null)
@@ -196,17 +207,17 @@ namespace Service.Facade
             else
             {
                 throw new System.InvalidOperationException("Student or course is null!");
-                
+
             }
-         }
+        }
 
         public void CreateStudent(Student student)
         {
             db.PersonSet.Add(student);
             db.SaveChanges();
-           
+
         }
-        
+
         public List<string> GetStudentInfo(int id)
         {
             List<string> studentInfo = new List<string>();
@@ -236,7 +247,7 @@ namespace Service.Facade
                 {
                     return studentName = p.Name + " " + p.FamilyName;
                 }
-                
+
             }
             return "Uknown User";
         }
