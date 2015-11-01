@@ -47,9 +47,7 @@ namespace Service.Services
 
         [OperationContract]
         Dictionary<int, Grade> GetAllExamGrades(int StudentID);
-
-	    [OperationContract]
-	    Dictionary<string, int> getAvailableExams();
+        
 
         [OperationContract]
         List<int> GetCourseIDsForStudent(int StudentID);

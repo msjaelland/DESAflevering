@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Types;
 
-namespace WpfApplication1.Facade
+namespace StudentGUI.Facade
 {
     class NetworkFacade
     {
@@ -75,24 +75,7 @@ namespace WpfApplication1.Facade
         {
             return proxy.GetExamGrade(StudentID, ExamID);
         }
-
-        public Dictionary<string, int> getAvailableExams()
-        {
-            proxy.getAvailableExams();
-            Dictionary<string, int> availbableExams = new Dictionary<string, int>();
-            //if (student.Exam != null)
-            //    foreach (var i in student.Course)
-            //    {
-
-            //        foreach (var j in i.Exam)
-            //        {
-            //            availbableExams.Add(i.Name, j.Id);
-            //        }
-            //    }
-            return availbableExams;
-        //}
         
-        }
 
         public List<int> GetListOfCourseId()
         {

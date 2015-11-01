@@ -64,17 +64,12 @@ namespace Service.Facade
         //Returns all courses (by ID) for given student
         public List<int> GetCourseIDsForStudent(int StudentID)
         {
-            List<int> courseIDs = new List<int>();
-            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == StudentID && s is Student);
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == StudentID) as Student;
 
-            var courses = from c in student.Course select c;
-
-            foreach (Course c in courses)
-            {
-                courseIDs.Add(c.Id);
-            }
+            var courses = from c in student.Course select c.Id;
+          
             Console.WriteLine("Returning courseIDs");
-            return courseIDs;
+            return courses.ToList<int>();
         }
 
         //Returns name of a teacher by id
@@ -139,6 +134,7 @@ namespace Service.Facade
             return grade;
 
         }
+        
         //Not testet since calenderentries have not been implemented
         //TODO: Make this method better/more effecient!
         public List<String> GetStudentCourseSchedule(int studentID)
@@ -159,7 +155,7 @@ namespace Service.Facade
                 }
             }
             return courseSchedule; ; 
-        }
+        } 
         //Assigns a student to an exam by adding a realtion to table StudentExam
         public void AssignStudentToExam(int studentID, int examID)
         {

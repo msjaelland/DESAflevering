@@ -14,8 +14,7 @@ namespace Service.Services
     {
 
         DomainFacade df;
-        private Student student; 
-
+        
         public StudentService()
         {
             df = new DomainFacade(); 
@@ -80,22 +79,7 @@ namespace Service.Services
         {
             return df.GetExamGrade(StudentID, examID);
         }
-
-        public Dictionary<string, int> getAvailableExams()
-        {
-            Dictionary<string, int> availbableExams = new Dictionary<string, int>();
-            if(student.Exam!=null)
-                foreach (var i in student.Course)
-                {
-
-                    foreach (var j in i.Exam)
-                    {
-                     availbableExams.Add(i.Name, j.Id);
-                    }
-             }
-            return availbableExams;
-        }
-
+        
         public List<int> GetCourseIDsForStudent(int StudentID)
         {
             return df.GetCourseIDsForStudent(StudentID); 
