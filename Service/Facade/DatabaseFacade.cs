@@ -87,6 +87,23 @@ namespace Service.Facade
 
         //}
 
+        public List<int> GetCourseIDsForStudent(int StudentID)
+        {
+            List<int> courseIDs = new List<int>();
+            Student student = (Student)db.PersonSet.FirstOrDefault(s => s.Id == StudentID && s is Student);
+
+            var courses = from c in student.Course select c;
+
+            foreach (Course c in courses)
+            {
+                courseIDs.Add(c.Id);
+            }
+            Console.WriteLine("Returning courseIDs");
+            //Console.WriteLine("Length is: " + courseIDs.Count.ToString());
+            //courseIDs.ForEach(Console.WriteLine);
+            return courseIDs;
+        }
+
         public string GetTeacherName(int id)
         {
             var persons = from p in db.PersonSet select p;

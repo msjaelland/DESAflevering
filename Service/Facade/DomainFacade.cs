@@ -124,5 +124,9 @@ namespace Service.Facade
             dbf.UnregisterStudentFromCourse(studentID, CourseID);
         }
 
+        public List<int> GetCourseIDsForStudent(int StudentID)
+        {
+            return dbf.GetCourseIDsForStudent(StudentID);
+        }
     }
 }

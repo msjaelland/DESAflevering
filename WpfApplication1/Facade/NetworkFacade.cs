@@ -98,5 +98,10 @@ namespace WpfApplication1.Facade
             return proxy.GetListOfCourseId();
         }
 
+        public List<int> GetCourseIDsForStudent(int StudentID)
+        {
+            return proxy.GetCourseIDsForStudent(StudentID);
+        }
+
     }
 }

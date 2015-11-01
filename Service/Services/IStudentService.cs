@@ -49,5 +49,8 @@ namespace Service.Services
 
 	    [OperationContract]
 	    Dictionary<string, int> getAvailableExams();
-	}
+
+        [OperationContract]
+        List<int> GetCourseIDsForStudent(int StudentID);
+    }
 }

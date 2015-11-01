@@ -96,6 +96,9 @@ namespace Service.Services
             return availbableExams;
         }
 
-        
+        public List<int> GetCourseIDsForStudent(int StudentID)
+        {
+            return df.GetCourseIDsForStudent(StudentID); 
+        }
     }
 }
