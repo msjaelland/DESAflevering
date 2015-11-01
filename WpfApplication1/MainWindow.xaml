@@ -29,7 +29,7 @@
                     <Button x:Name="SignInButton" Content="Sign In" HorizontalAlignment="Left" Margin="53.214,317,0,0" VerticalAlignment="Top" Width="75" FontSize="16" Grid.Column="1" Click="SignInButton_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Courses" Height="23" Margin="-1.857,0,-2.429,-0.143" VerticalAlignment="Top">
+            <TabItem Header="Courses" Height="23" Margin="-1.857,0,-2.429,-0.143" VerticalAlignment="Top" >
                 <Grid Background="#FFE5E5E5">
                     <ListView x:Name="AvaliableCourcesListView" Margin="0,35,444.571,34.571">
                         <ListView.View>
@@ -60,20 +60,26 @@
                     <Label x:Name="label" Content="Avaliable Courses" HorizontalAlignment="Left" Margin="150,-1,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.003,0.097"/>
                     <Label x:Name="label_Copy" Content="My Courses" HorizontalAlignment="Left" Margin="619,-1,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.003,0.097"/>
                     <Button x:Name="SignUpCourseButton" Content="Sign Up" HorizontalAlignment="Left" Margin="138,0,0,4.571" VerticalAlignment="Bottom" Width="162" FontSize="16" Click="SignUpCourseButton_Click"/>
-                    <Button x:Name="UnregisterButton" Content="Unregister" HorizontalAlignment="Left" Margin="584,0,0,4.571" VerticalAlignment="Bottom" Width="162" FontSize="16" Click="UnregisterButton_Click"/>
+                    <Button x:Name="UnregisterButton" Content="Unregister" HorizontalAlignment="Left" Margin="549,0,0,6" VerticalAlignment="Bottom" Width="162" FontSize="16" Click="UnregisterButton_Click"/>
+                    <Button x:Name="LoadMyExamsButton" HorizontalAlignment="Left" Margin="728,0,0,6" VerticalAlignment="Bottom" Width="135" Height="25" Click="LoadMyExamsButton_Click" RenderTransformOrigin="-2.911,-2.139" Content="Load my exams" FontSize="16"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="ExamsTab" Header="Exams">
                 <Grid Background="#FFE5E5E5">
-                    <ListView x:Name="listView_Copy1" HorizontalAlignment="Left" Height="365" Margin="0,35,-0.429,0" VerticalAlignment="Top" Width="889">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="396*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="listView_Copy1" HorizontalAlignment="Left" Height="365" Margin="0,35,-3,0" VerticalAlignment="Top" Width="889" Grid.ColumnSpan="3">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Label x:Name="label2_Copy1" Content="Avaliable Exams" Margin="376,4,378.571,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.546,-0.28"/>
-                    <Button x:Name="SignUpExamButton" Content="Sign Up" Margin="407,408,406.571,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.501,0.5" Click="SignUpExamButton_Click"/>
+                    <Label x:Name="label2_Copy1" Content="Avaliable Exams" Margin="282,4,379,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.546,-0.28" Grid.Column="2"/>
+                    <Button x:Name="SignUpExamButton" Content="Sign Up" Margin="313,408,407,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.501,0.5" Click="SignUpExamButton_Click" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="GradesTab" Header="Grades">

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StudentGUI.Facade;
+using Types;
 
 
 namespace StudentGUI
@@ -57,11 +58,12 @@ namespace StudentGUI
         #endregion
 
         #region Courses
+        /*
+        Updates list of avaialable courses
+        */
         public void UpdateCoursesListView()
         {
             AvaliableCourcesListView.Items.Clear();
-            //courseId = nf.GetListOfCourseId();  //not needed if using Database
-           
             foreach (int i in nf.GetListOfCourseId())
             {
                 List<string> courseInfo = nf.GetCourseInfo(i);
@@ -69,12 +71,11 @@ namespace StudentGUI
             }
         }
         /*
-        METODE DER SKAL OPDATERE MYCOURSELISTVIEW, SÅ DE COURSES SOM DEN PÅGÆLDENDE STUDENT ER SIGNET OP TIL BLIVER VIST I LISTEN 
+        Updates list of my courses
         */
         public void UpdateMyCoursesListView()
         {
             MyCoursesListView.Items.Clear();
-            
             foreach (int i in nf.GetCourseIDsForStudent(currentStudentId))  
             {
                 List<string> courseInfo = nf.GetCourseInfo(i);
@@ -84,35 +85,50 @@ namespace StudentGUI
         }
 
         /*
-        METODE DER SIGNER EN STUDENT OP TIL ET COURSE
+        Signs up a student for a course
         */
         private void SignUpCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            int selectedIndex = AvaliableCourcesListView.SelectedIndex;
-            selectedCourseId = courseId[selectedIndex];
-            //MIDLERTIDIG
-            myCourses.Add(selectedCourseId);
-            //
+            List<String> fetchedCourseID = (List<String>)AvaliableCourcesListView.SelectedItem; //get ID of selected course
+            
+            Console.WriteLine("Student with ID: " + currentStudentId + " signed up for course with ID: " + fetchedCourseID[0]);
+            nf.SignUpForCourse(currentStudentId, Int32.Parse(fetchedCourseID[0])); 
             UpdateMyCoursesListView();
-            Console.WriteLine(currentStudentId + " + " + selectedCourseId);
-            nf.SignUpForCourse(currentStudentId, selectedCourseId); //actually signs a student up in the database
         }
 
         #endregion
 
         private void SignUpExamButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateMyCoursesListView();
+            //TODO: Implement much
         }
 
         private void UnregisterButton_Click(object sender, RoutedEventArgs e)
         {
-            int selectedIndex = AvaliableCourcesListView.SelectedIndex;
-            selectedCourseId = courseId[selectedIndex];
-            myCourses.Remove(selectedCourseId);
+            List<String> fetchedCourseID = (List<String>)MyCoursesListView.SelectedItem; //get ID of selected course
 
-            nf.UnregisterFromCourse(currentStudentId, selectedCourseId);
+            Console.WriteLine("Student with ID: " + currentStudentId + " resigned from course with ID: " + fetchedCourseID[0]);
+            nf.UnregisterFromCourse(currentStudentId, Int32.Parse(fetchedCourseID[0]));
+            UpdateMyCoursesListView();
+        }
 
+        private void TabItem_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+           
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void TabItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void LoadMyExamsButton_Click(object sender, RoutedEventArgs e)
+        {
             UpdateMyCoursesListView();
         }
     }
