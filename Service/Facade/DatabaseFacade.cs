@@ -73,37 +73,24 @@ namespace Service.Facade
         }
 
         //Returns name of a teacher by id
-        public string GetTeacherName(int id)
+        public string GetTeacherName(int teacherID)
         {
-            var persons = from p in db.PersonSet select p;
+            Teacher teacher = db.PersonSet.FirstOrDefault(t => t.Id == teacherID) as Teacher;
 
-            foreach (Person p in persons)
-            {
-                if (p.Id == id && p is Teacher)
-                {
-                    return p.Name + p.FamilyName;
-                }
-            }
-            return null;
+            return teacher.Name + " " + teacher.FamilyName;
         }
 
         public void AssignTeacher(int teacherId, int courseId)
         {
-            var courses = from c in db.CourseSet select c;
+            Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseId);
+            course.TeacherId = teacherId;
 
-            foreach (Course c in courses)
-            {
-                if (c.Id == courseId)
-                {
-                    c.TeacherId = teacherId;
-                    db.SaveChanges();
-                }
-            }
+            db.SaveChanges();
         }
         #endregion
 
         #region Student stuff
-        //Returns Dictionary<examID(int), grade(Grade)
+        //Returns Dictionary<examID(int), grade(Grade)>
         public Dictionary<int, Grade> GetAllExamGrades(int StudentID)
         {
             Dictionary<int, Grade> examGrades = new Dictionary<int, Grade>();
@@ -214,73 +201,41 @@ namespace Service.Facade
 
         }
 
-        public List<string> GetStudentInfo(int id)
+        public List<string> GetStudentInfo(int StudentID)
         {
             List<string> studentInfo = new List<string>();
-            var persons = from p in db.PersonSet select p;
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == StudentID) as Student;
 
-            foreach (Person p in persons)
-            {
-                if (p.Id == id && p is Teacher)
-                {
-                    studentInfo.Add(p.Id.ToString());
-                    studentInfo.Add(p.Name);
-                    studentInfo.Add(p.FamilyName);
-                    studentInfo.Add(p.Email);
-                }
-            }
+            studentInfo.Add(student.Id.ToString());
+            studentInfo.Add(student.Name);
+            studentInfo.Add(student.FamilyName);
+            studentInfo.Add(student.Email);
+            
             return studentInfo;
         }
 
-        public string GetStudentName(int id)
+        public string GetStudentName(int StudentID)
         {
-            string studentName;
-            var persons = from p in db.PersonSet select p;
-
-            foreach (Person p in persons)
-            {
-                if (p.Id == id && p is Student)
-                {
-                    return studentName = p.Name + " " + p.FamilyName;
-                }
-
-            }
-            return "Uknown User";
+            Student student = db.PersonSet.FirstOrDefault(s => s.Id == StudentID) as Student;
+            return student.Name +" "+ student.FamilyName;
         }
 
         public int GetStudentIdByEmail(string email)
         {
-            db.SaveChanges();
-            int studentId;
-            var persons = from p in db.PersonSet select p;
-            Console.WriteLine(email);
-            foreach (Person p in persons)
-            {
-                if (p.Email == email && p is Student)
-                {
-                    studentId = p.Id;
-                    return studentId;
-                }
-            }
-
-            return 0;
+            Student student = db.PersonSet.FirstOrDefault(s => s.Email == email) as Student;
+            return student.Id;
         }
 
         public List<string> GetStudentByEmail(string email)
         {
-            List<string> studentInfo = new List<string>();
-            var persons = from p in db.PersonSet select p;
+            List<String> studentInfo = new List<String>();
+            Student student = db.PersonSet.FirstOrDefault(s => s.Email == email) as Student;
 
-            foreach (Person p in persons)
-            {
-                if (p.Email == email && p is Student)
-                {
-                    studentInfo.Add(p.Id.ToString());
-                    studentInfo.Add(p.Name);
-                    studentInfo.Add(p.FamilyName);
-                    studentInfo.Add(p.Email);
-                }
-            }
+            studentInfo.Add(student.Id.ToString());
+            studentInfo.Add(student.Name);
+            studentInfo.Add(student.FamilyName);
+            studentInfo.Add(student.Email);
+            
             return studentInfo;
         }
 
@@ -301,53 +256,36 @@ namespace Service.Facade
             return courses.ToList<int>();
         }
 
-        public List<string> GetCourseInfo(int id)
+        public List<string> GetCourseInfo(int CourseID)
         {
             List<string> courseInfo = new List<string>();
+            Course course = db.CourseSet.FirstOrDefault(c => c.Id == CourseID);
 
-            var courses = from c in db.CourseSet select c;
+            courseInfo.Add(course.Id.ToString());
+            courseInfo.Add(course.Name);
+            courseInfo.Add(course.Instance.ToString() + " " + course.InstanceYear.ToString());
+            courseInfo.Add(course.Description);
+            courseInfo.Add(course.ECTS.ToString());
+            courseInfo.Add(course.TeacherId.ToString());
+            //courseInfo.Add(GetTeacherName(course.TeacherId));
 
-            foreach (Course c in courses)
-            {
-                if (c.Id == id)
-                {
-                    courseInfo.Add(c.Id.ToString());
-                    courseInfo.Add(c.Name);
-                    courseInfo.Add(c.Instance.ToString() + " " + c.InstanceYear.ToString());
-                    courseInfo.Add(c.Description);
-                    courseInfo.Add(c.ECTS.ToString());
-                    courseInfo.Add(c.TeacherId.ToString());
-                    courseInfo.Add(GetTeacherName(c.TeacherId));
-
-                    return courseInfo;
-                }
-            }
-            return null;
+            return courseInfo;
         }
-
-        public List<int> GetStudentIdsForCourse(int courseId)
+       
+        /*
+        Return IDs of all students in given course
+        */
+        public List<int> GetStudentIdsForCourse(int courseID)
         {
-            List<Student> studentList = new List<Student>();
-            List<int> studentIds = new List<int>();
+            Course course = db.CourseSet.FirstOrDefault(c => c.Id == courseID);
+            var students = from s in course.Student select s.Id;
 
-            var courses = from c in db.CourseSet select c;
-
-            foreach (Course c in courses)
-            {
-                if (c.Id == courseId)
-                {
-                    studentList = c.Student.ToList();
-                    foreach (Person p in studentList)
-                    {
-                        if (p is Student)
-                        {
-                            studentIds.Add(p.Id);
-                        }
-                    }
-                }
-            }
-            return studentIds;
+            Console.WriteLine("Student IDs for course with ID = "+courseID+" are:");
+            students.ToList<int>().ForEach(Console.WriteLine);
+            return students.ToList<int>();
         }
+         
+
         #endregion
 
         #region Calender entry stuff

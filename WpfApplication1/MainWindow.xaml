@@ -61,7 +61,7 @@
                     <Label x:Name="label_Copy" Content="My Courses" HorizontalAlignment="Left" Margin="619,-1,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.003,0.097"/>
                     <Button x:Name="SignUpCourseButton" Content="Sign Up" HorizontalAlignment="Left" Margin="138,0,0,4.571" VerticalAlignment="Bottom" Width="162" FontSize="16" Click="SignUpCourseButton_Click"/>
                     <Button x:Name="UnregisterButton" Content="Unregister" HorizontalAlignment="Left" Margin="549,0,0,6" VerticalAlignment="Bottom" Width="162" FontSize="16" Click="UnregisterButton_Click"/>
-                    <Button x:Name="LoadMyExamsButton" HorizontalAlignment="Left" Margin="728,0,0,6" VerticalAlignment="Bottom" Width="135" Height="25" Click="LoadMyExamsButton_Click" RenderTransformOrigin="-2.911,-2.139" Content="Load my exams" FontSize="16"/>
+                    <Button x:Name="LoadMyExamsButton" HorizontalAlignment="Left" Margin="728,0,0,6" VerticalAlignment="Bottom" Width="135" Height="25" Click="LoadMyExamsButton_Click" RenderTransformOrigin="-2.911,-2.139" Content="Load my courses" FontSize="16"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="ExamsTab" Header="Exams">

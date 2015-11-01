@@ -26,10 +26,6 @@ namespace StudentGUI
         NetworkFacade nf;
         
         int currentStudentId;
-        int selectedCourseId;
-        List<int> courseId;
-        List<int> myCourses = new List<int>();
-        List<int> courseIDsForStudent;
          
 
         public MainWindow()
@@ -41,6 +37,10 @@ namespace StudentGUI
 
         #region Register_Done
 
+        /*
+        Register for first time use
+        You're automatically signed in
+        */
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             nf.Register(NameTextBox.Text, FamilyNameTextBox.Text, EmailTextBox.Text);
@@ -48,6 +48,9 @@ namespace StudentGUI
             CurrentUserLabel.Content = nf.GetStudentName(currentStudentId);
         }
 
+        /*
+        Sign in to the system if you already have an account
+        */
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
            currentStudentId = nf.GetStudentIdByEmail(EmailSignInTextBox.Text);
@@ -102,7 +105,9 @@ namespace StudentGUI
         {
             //TODO: Implement much
         }
-
+        /*
+        Unregisters a student from a course
+        */
         private void UnregisterButton_Click(object sender, RoutedEventArgs e)
         {
             List<String> fetchedCourseID = (List<String>)MyCoursesListView.SelectedItem; //get ID of selected course
@@ -130,6 +135,7 @@ namespace StudentGUI
         private void LoadMyExamsButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateMyCoursesListView();
+            UpdateCoursesListView();
         }
     }
 }

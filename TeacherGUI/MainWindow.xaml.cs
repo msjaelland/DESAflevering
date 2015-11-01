@@ -41,6 +41,7 @@ namespace TeacherGUI
             }
         }
 
+
         private void lstCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<string> fetchedCourseId = (List<string>)lstCourses.SelectedItem;
